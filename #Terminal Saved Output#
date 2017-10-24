@@ -1,0 +1,1468 @@
+Last login: Tue Oct 17 22:23:42 on ttys001
+Tommys-MacBook-Pro:~ tommy$ ssh mit318@sunlab.cse.lehigh.edu
+Warning: Permanently added the RSA host key for IP address '128.180.120.75' to the list of known hosts.
+mit318@sunlab.cse.lehigh.edu's password: 
+Last login: Thu Apr 13 18:14:19 2017 from 128.180.139.37
+
+                     LU CSE Workstation Network
+
+                   PA112 and PA122 open hours are:
+
+                      Mon - Thu 9 AM to 10 PM
+                            Fri 9 AM to  6 PM
+                            Sun 1 PM to  6 PM
+
+            * * * * * * * * * * * * * * * * * * * * * * * *
+            * * *  Do NOT turn off Unix workstations. * * *
+            * * *  There may be remote users online.  * * *
+            * * * * * * * * * * * * * * * * * * * * * * * *
+
+             sunlab.cse.lehigh.edu is a single name for a
+            collection of machines running CentOS 6.9 Linux:
+
+            ariel caliban callisto ceres chiron cupid dactyl
+            enceladus eris ganymede hydra iapetus io jupiter
+            mars mercury miranda nereid nix pan phobos puck
+                          saturn vesta xena
+
+            SSH to sunlab.cse.lehigh.edu always works
+
+
+hydra:~% 
+hydra:~% 
+hydra:~% 
+hydra:~% ls
+addd*	 cse002.151/  cse303/	  Hw1/	      Pictures/     qqq.tar.gz	Videos/
+a.hs	 cse109.15/   cse303.p3/  hw1.tar.gz  profile	    strstr.c	word/
+asd*	 cse109.154/  Desktop/	  mit318/     prog8/	    temp3/	xuejie/
+caonima  CSE202/      Documents/  Music/      Prog8.tar.gz  Templates/
+cp/	 CSE262/      Downloads/  myalive.c   Public/	    test/
+hydra:~% 
+hydra:~% 
+hydra:~% 
+hydra:~% cd cse303/p4
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% ls
+aaa.txt		bob.data     libpart2.c    part1a.c	  picard.data	team.c
+alice.data	ccc.d	     Makefile	   part1a.d	  rick.data
+assignment.txt	hacker.data  Makefile.bak  part1a.sh	  student.data
+banker		kirk.data    morty.data    part1b.c	  support.c
+bbb.txt		libpart1.c   obj64/	   part2_hash.cc  support.h
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% make
+echo "[CC] team.c --> obj64/team.o"
+[CC] team.c --> obj64/team.o
+gcc team.c -o obj64/team.o -c -MMD -O0 -m64 -ggdb -D_GNU_SOURCE -fPIC
+echo "[LD] obj64/part1a.o --> obj64/part1a"
+[LD] obj64/part1a.o --> obj64/part1a
+gcc obj64/part1a.o obj64/team.o obj64/support.o obj64/libpart1.so -o obj64/part1a -m64 -ldl -L./obj64/ -lpart1
+echo "[LD] obj64/part1b.o --> obj64/part1b"
+[LD] obj64/part1b.o --> obj64/part1b
+gcc obj64/part1b.o obj64/team.o obj64/support.o -o obj64/part1b -m64 -ldl
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% ls
+aaa.txt		bbb.txt      kirk.data	 Makefile.bak  part1a.d       picard.data   support.h
+alice.data	bob.data     libpart1.c  morty.data    part1a.sh      rick.data     team.c
+assignment.txt	ccc.d	     libpart2.c  obj64/        part1b.c       student.data
+banker		hacker.data  Makefile	 part1a.c      part2_hash.cc  support.c
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% ./part1a.so
+-bash: ./part1a.so: No such file or directory
+hydra:~/cse303/p4% ./par1a.sh
+-bash: ./par1a.sh: No such file or directory
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% ./part1a.sh
+-bash: ./part1a.sh: Permission denied
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% cdmod +x part1a.sh
+-bash: cdmod: command not found
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% chmod +x part1a.sh
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% ./part1a.sh
+Student 1 : Mingjun(Tommy) Tang
+Email 1   : mit318@lehigh.edu
+Student 2 : Krishan Madan
+Email 2   : krm219@lehigh.edu
+Student 3 : Daniel Truong
+Email 3   : dat218@lehigh.edu
+
+hello from a .so
+Student 1 : MINGJUN(TOMMY) TANG
+Email 1   : MIT318@LEHIGH.EDU
+Student 2 : KRISHAN MADAN
+Email 2   : KRM219@LEHIGH.EDU
+Student 3 : DANIEL TRUONG
+Email 3   : DAT218@LEHIGH.EDU
+
+hydra:~/cse303/p4% cd obj64/
+hydra:~/cse303/p4/obj64% ls
+libpart1.d   libpart2.d  libpart2.so  part1a.d	part1b*   part1b.o	part2_hash.o  support.o  team.o
+libpart1.so  libpart2.o  part1a*      part1a.o	part1b.d  part2_hash.d	support.d     team.d
+hydra:~/cse303/p4/obj64% ./part1b
+Student 1 : Mingjun(Tommy) Tang
+Email 1   : mit318@lehigh.edu
+Student 2 : Krishan Madan
+Email 2   : krm219@lehigh.edu
+Student 3 : Daniel Truong
+Email 3   : dat218@lehigh.edu
+
+hello from a .so
+execute hello success
+hydra:~/cse303/p4/obj64% 
+hydra:~/cse303/p4/obj64% 
+hydra:~/cse303/p4/obj64% 
+hydra:~/cse303/p4/obj64% LD_PRELOAD=obj64/libpart2.so ./banker 0
+-bash: ./banker: No such file or directory
+hydra:~/cse303/p4/obj64% cd ..
+hydra:~/cse303/p4% ls -lrt
+total 343
+-rw-r--r--. 1 mit318 ugrad 129680 Oct 17 10:21 aaa.txt
+-rw-r--r--. 1 mit318 ugrad    437 Oct 17 10:21 support.h
+-rw-r--r--. 1 mit318 ugrad   3660 Oct 17 10:21 libpart2.c
+-rw-r--r--. 1 mit318 ugrad    917 Oct 17 10:22 support.c
+-rw-r--r--. 1 mit318 ugrad   1823 Oct 17 10:22 part1b.c
+-rw-r--r--. 1 mit318 ugrad   2064 Oct 17 10:22 part1a.c
+-rw-r--r--. 1 mit318 ugrad      2 Oct 17 10:22 morty.data
+-rw-r--r--. 1 mit318 ugrad   1492 Oct 17 10:22 libpart1.c
+-rw-r--r--. 1 mit318 ugrad 129458 Oct 17 10:22 ccc.d
+-rw-r--r--. 1 mit318 ugrad      3 Oct 17 10:22 bob.data
+-rw-r--r--. 1 mit318 ugrad  23345 Oct 17 10:22 banker
+-rw-r--r--. 1 mit318 ugrad  14877 Oct 17 10:22 assignment.txt
+-rw-r--r--. 1 mit318 ugrad      3 Oct 17 10:22 alice.data
+-rw-r--r--. 1 mit318 ugrad      3 Oct 17 10:22 student.data
+-rw-r--r--. 1 mit318 ugrad      4 Oct 17 10:22 rick.data
+-rw-r--r--. 1 mit318 ugrad      3 Oct 17 10:22 picard.data
+-rw-r--r--. 1 mit318 ugrad    958 Oct 17 10:22 part2_hash.cc
+-rwxr--r--. 1 mit318 ugrad     38 Oct 17 10:22 part1a.sh*
+-rw-r--r--. 1 mit318 ugrad     27 Oct 17 10:22 part1a.d
+-rw-r--r--. 1 mit318 ugrad   2185 Oct 17 10:22 Makefile.bak
+-rw-r--r--. 1 mit318 ugrad      3 Oct 17 10:22 kirk.data
+-rw-r--r--. 1 mit318 ugrad      1 Oct 17 10:22 hacker.data
+-rw-r--r--. 1 mit318 ugrad   3659 Oct 17 10:22 bbb.txt
+-rw-r--r--. 1 mit318 ugrad   2185 Oct 17 10:24 Makefile
+-rw-r--r--. 1 mit318 ugrad    385 Oct 18 03:39 team.c
+drwxr-xr-x. 2 mit318 ugrad     19 Oct 20 07:16 obj64/
+hydra:~/cse303/p4% chmod +x banker
+hydra:~/cse303/p4% LD_PRELOAD=obj64/libpart2.so ./banker 0
+STATUS: Building baseline file set....
+Allocations made: 72704.
+hydra:~/cse303/p4% ls
+aaa.txt		bbb.txt      kirk.data	 Makefile.bak  part1a.d       picard.data   support.h
+alice.data	bob.data     libpart1.c  morty.data    part1a.sh*     rick.data     team.c
+assignment.txt	ccc.d	     libpart2.c  obj64/        part1b.c       student.data
+banker*		hacker.data  Makefile	 part1a.c      part2_hash.cc  support.c
+hydra:~/cse303/p4% vim alice.data 
+hydra:~/cse303/p4% LD_PRELOAD=obj64/libpart2.so ./banker 9
+STATUS: Reviewing baseline file set....
+STATUS: Account bob.data has 200
+STATUS: Account alice.data has 300
+STATUS: Account rick.data has 1500
+STATUS: Account morty.data has 55
+STATUS: Account picard.data has 500
+STATUS: Account kirk.data has 500
+STATUS: Account student.data has 125
+STATUS: Account hacker.data has 0
+STATUS: Total observed: 3180.
+Allocations made: 72704.
+hydra:~/cse303/p4% LD_PRELOAD=obj64/libpart2.so ./banker 1
+Please enter the password for user student: sss
+You have 125 dollars.
+Allocations made: 72704.
+Allocations made: 10.
+Allocations made: 40.
+Allocations made: 13.
+Allocations made: 100.
+Allocations made: 13.
+Allocations made: 568.
+hydra:~/cse303/p4% ./banker 1
+Please enter the password for user student: sss
+STATUS: Incorrect password!!
+hydra:~/cse303/p4% strace -o bbb.txt ./banker 1
+Please enter the password for user student: sss
+STATUS: Incorrect password!!
+hydra:~/cse303/p4% vim bbb.txt
+hydra:~/cse303/p4% objdump objdump --section=.text -s mytest.o
+
+objdump: 'objdump': No such file
+objdump: 'mytest.o': No such file
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% objdump --section=.text -s banker
+
+banker:     file format elf64-x86-64
+
+Contents of section .text:
+ 400fc0 555389fd 4883ec08 e813ffff ff8b3848  US..H.........8H
+ 400fd0 89c3e8b9 feffff48 8b3d3a33 20008b13  .......H.=:3 ...
+ 400fe0 4889c1be 58344000 31c0e881 ffffff89  H...X4@.1.......
+ 400ff0 efe8eafd ffff9090 31ed4989 d15e4889  ........1.I..^H.
+ 401000 e24883e4 f0505449 c7c03033 400048c7  .H...PTI..03@.H.
+ 401010 c1403340 0048c7c7 70144000 e8fffdff  .@3@.H..p.@.....
+ 401020 fff49090 4883ec08 488b0581 31200048  ....H...H...1 .H
+ 401030 85c07402 ffd04883 c408c390 90909090  ..t...H.........
+ 401040 55b81043 6000483d 10436000 4889e574  U..C`.H=.C`.H..t
+ 401050 17b80000 00004885 c0740d5d bf104360  ......H..t.]..C`
+ 401060 00ffe00f 1f440000 5dc3660f 1f440000  .....D..].f..D..
+ 401070 be104360 00554881 ee104360 004889e5  ..C`.UH...C`.H..
+ 401080 48c1fe03 4889f048 c1e83f48 01c648d1  H...H..H..?H..H.
+ 401090 fe7415b8 00000000 4885c074 0b5dbf10  .t......H..t.]..
+ 4010a0 436000ff e00f1f00 5dc3660f 1f440000  C`......].f..D..
+ 4010b0 803d7132 20000075 6755488b 056f3220  .=q2 ..ugUH..o2 
+ 4010c0 004889e5 415453bb 18406000 41bc1040  .H..ATS..@`.A..@
+ 4010d0 60004881 eb104060 0048c1fb 034883eb  `.H...@`.H...H..
+ 4010e0 014839d8 7325662e 0f1f8400 00000000  .H9.s%f.........
+ 4010f0 4883c001 48890535 32200041 ff14c448  H...H..52 .A...H
+ 401100 8b052a32 20004839 d872e5e8 30ffffff  ..*2 .H9.r..0...
+ 401110 5bc60510 32200001 415c5dc3 0f1f4000  [...2 ..A\]...@.
+ 401120 f3c36666 6666662e 0f1f8400 00000000  ..fffff.........
+ 401130 554889e5 5de936ff ffff9090 90909090  UH..].6.........
+ 401140 4883ec18 c744240c 00000000 eb116690  H....D$.......f.
+ 401150 8b05e231 200083c0 018905d9 31200048  ...1 .......1 .H
+ 401160 8d7c240c e837fcff ff83f8ff 75e2e86d  .|$..7......u..m
+ 401170 fdffff83 380a7505 4883c418 c3bf0100  ....8.u.H.......
+ 401180 0000ba1f 000000be 38344000 e8effdff  ........84@.....
+ 401190 ffbfc800 0000e8a5 fcffff0f 1f440000  .............D..
+ 4011a0 5331d231 f689fb48 83ec3048 c7442408  S1.1...H..0H.D$.
+ 4011b0 00000000 e8e7fcff ff4883f8 ff743d48  .........H...t=H
+ 4011c0 8d742410 ba140000 0089dfe8 20fcffff  .t$......... ...
+ 4011d0 4883f8ff 7457488d 54240848 8d7c2410  H...tWH.T$.H.|$.
+ 4011e0 c6440410 00bef83b 400031c0 e88ffcff  .D.....;@.1.....
+ 4011f0 ff488b44 24084883 c4305bc3 e8dffcff  .H.D$.H..0[.....
+ 401200 ff8b3848 89c3e885 fcffff48 8b3d0631  ..8H.......H.=.1
+ 401210 20008b13 4889c1be 88344000 31c0e84d   ...H....4@.1..M
+ 401220 fdffffbf bc020000 e8b3fbff ffe8aefc  ................
+ 401230 ffff8b38 4889c3e8 54fcffff 488b3dd5  ...8H...T...H.=.
+ 401240 3020008b 134889c1 beb03440 0031c0e8  0 ...H....4@.1..
+ 401250 1cfdffff bf2c0100 00e882fb ffff6690  .....,........f.
+ 401260 41545549 89f45331 f689fd48 83ec20e8  ATUI..S1...H.. .
+ 401270 ccfcffff 83f8ff0f 84e00000 0031d231  .............1.1
+ 401280 f689efe8 18fcffff 4883f8ff 0f849a00  ........H.......
+ 401290 00004889 e34c89e2 befb3b40 004889df  ..H..L....;@.H..
+ 4012a0 31c0e8c9 fbffff48 89da8b0a 4883c204  1......H....H...
+ 4012b0 8d81fffe fefef7d1 21c82580 80808074  ........!.%....t
+ 4012c0 e989c189 efc1e910 a9808000 000f44c1  ..............D.
+ 4012d0 488d4a02 89c6480f 44d14000 c64889de  H.J...H.D.@..H..
+ 4012e0 4883da03 4829dae8 94fcffff 4883f8ff  H...H)......H...
+ 4012f0 74094883 c4205b5d 415cc3e8 e0fbffff  t.H.. []A\......
+ 401300 8b384889 c3e886fb ffff488b 3d073020  .8H.......H.=.0 
+ 401310 008b1348 89c1be00 35400031 c0e84efc  ...H....5@.1..N.
+ 401320 ffffbf90 010000e8 b4faffff e8affbff  ................
+ 401330 ff8b3848 89c3e855 fbffff48 8b3dd62f  ..8H...U...H.=./
+ 401340 20008b13 4889c1be 88344000 31c0e81d   ...H....4@.1...
+ 401350 fcffffbf 58020000 e883faff ffe87efb  ....X.........~.
+ 401360 ffff8b38 4889c3e8 24fbffff 488b3da5  ...8H...$...H.=.
+ 401370 2f20008b 134889c1 bed83440 0031c0e8  / ...H....4@.1..
+ 401380 ecfbffff bff40100 00e852fa ffff6690  ..........R...f.
+ 401390 41564155 4989d641 54554189 f4534189  AVAUI..ATUA..SA.
+ 4013a0 fde8fafd ffff4489 e74889c5 89c3e8ed  ......D..H......
+ 4013b0 fdffff48 63d531f6 4c39f272 094429f5  ...Hc.1.L9.r.D).
+ 4013c0 4489f348 63f501c3 4489efe8 90feffff  D..Hc...D.......
+ 4013d0 4863f344 89e75b5d 415c415d 415ee97d  Hc.D..[]A\A]A^.}
+ 4013e0 feffff66 6666662e 0f1f8400 00000000  ...ffff.........
+ 4013f0 555331c0 89f3ba80 010000be 02000000  US1.............
+ 401400 4883ec08 e897fbff ff83f8ff 74074883  H...........t.H.
+ 401410 c4085b5d c3e8c6fa ffff8b38 4889c5e8  ..[].......8H...
+ 401420 6cfaffff 488b3ded 2e20008b 55004889  l...H.=.. ..U.H.
+ 401430 c1be2835 400031c0 e833fbff ff89dfe8  ..(5@.1..3......
+ 401440 9cf9ffff 6666662e 0f1f8400 00000000  ....fff.........
+ 401450 5389f3e8 38f9ffff 83f8ff74 025bc389  S...8......t.[..
+ 401460 dfe85afb ffff9090 90909090 90909090  ..Z.............
+ 401470 41578d47 fe415641 55415455 534889f3  AW.G.AVAUATUSH..
+ 401480 4881ecd8 01000083 f8010f87 0c010000  H...............
+ 401490 83ff0241 89fc7444 488b7e08 ba0a0000  ...A..tDH.~.....
+ 4014a0 0031f6e8 08faffff 83f80674 2f488b13  .1.........t/H..
+ 4014b0 488b3d61 2e2000be 58354000 31c0bd01  H.=a. ..X5@.1...
+ 4014c0 000000e8 a8faffff 4881c4d8 01000089  ........H.......
+ 4014d0 e85b5d41 5c415d41 5e415fc3 488b7b08  .[]A\A]A^A_.H.{.
+ 4014e0 31f6ba0a 000000e8 c4f9ffff 83f80949  1..............I
+ 4014f0 89c589c5 0f87c200 0000488b 7b0831d2  ..........H.{.1.
+ 401500 31f631c0 e897faff ff4183fd 037e0983  1.1......A...~..
+ 401510 c0010f85 c4000000 31ffe891 faffff89  ........1.......
+ 401520 c7e82af9 ffff4585 ed0f84d2 00000041  ..*...E........A
+ 401530 83fd090f 84b70600 004183fd 010f840c  .........A......
+ 401540 0d000041 83fd020f 84da0d00 004183fd  ...A.........A..
+ 401550 030f84c3 03000041 83fd070f 94442418  .......A.....D$.
+ 401560 4183fd04 0fb64424 180f84f0 09000084  A.....D$........
+ 401570 c00f85e8 09000041 83fd050f 84361000  .......A.....6..
+ 401580 004183fd 060f84f7 13000041 83fd080f  .A.........A....
+ 401590 84a20500 0031ede9 2cffffff 488b1648  .....1..,...H..H
+ 4015a0 8b3d722d 2000be58 35400031 c0bdd107  .=r- ..X5@.1....
+ 4015b0 0000e8b9 f9ffffe9 0cffffff 488b3d55  ............H.=U
+ 4015c0 2d200044 89eabe98 35400031 c0bd0200  - .D....5@.1....
+ 4015d0 0000e899 f9ffffe9 ecfeffff 488b0d35  ............H..5
+ 4015e0 2d2000ba 37000000 be010000 00bfd035  - ..7..........5
+ 4015f0 4000bd03 000000e8 64f9ffff e9c7feff  @.......d.......
+ 401600 ff488b0d 102d2000 ba270000 00be0100  .H...- ..'......
+ 401610 0000bf08 3640004c 8d6c2440 488d9c24  ....6@.L.l$@H..$
+ 401620 90000000 4531e449 83ceffe8 30f9ffff  ....E1.I....0...
+ 401630 660f6f05 98260000 48b8626f 622e6461  f.o..&..H.bob.da
+ 401640 746131d2 48898424 90000000 c78424a0  ta1.H..$......$.
+ 401650 00000000 0000000f 118424a4 00000048  ..........$....H
+ 401660 89942498 000000c7 8424b400 00000000  ..$......$......
+ 401670 000048b8 626f622e 656e6300 31d2660f  ..H.bob.enc.1.f.
+ 401680 6f055a26 0000c784 24c80000 00000000  o.Z&....$.......
+ 401690 00c78424 dc000000 00000000 0f118424  ...$...........$
+ 4016a0 b8000000 c78424f0 00000000 000000c7  ......$.........
+ 4016b0 84240401 00000000 0000660f 6f052e26  .$........f.o..&
+ 4016c0 0000c784 24180100 00000000 00c78424  ....$..........$
+ 4016d0 2c010000 00000000 0f118424 cc000000  ,..........$....
+ 4016e0 48c74424 40323030 0066c744 24480000  H.D$@200.f.D$H..
+ 4016f0 660f6f05 08260000 48c74424 4a333030  f.o..&..H.D$J300
+ 401700 0066c744 24520000 0f298424 e0000000  .f.D$R...).$....
+ 401710 48c74424 54313530 3066c744 245c0000  H.D$T1500f.D$\..
+ 401720 660f6f05 e8250000 48c74424 5e353500  f.o..%..H.D$^55.
+ 401730 0066c744 24660000 0f118424 f4000000  .f.D$f.....$....
+ 401740 660f6f05 d8250000 0f118424 08010000  f.o..%.....$....
+ 401750 660f6f05 d8250000 0f118424 1c010000  f.o..%.....$....
+ 401760 48c74424 68353030 00488984 24300100  H.D$h500.H..$0..
+ 401770 0048b872 69636b2e 656e6366 0f6f05bd  .H.rick.encf.o..
+ 401780 25000048 89942438 01000031 d2488984  %..H..$8...1.H..
+ 401790 24580100 000f1184 24440100 00488994  $X......$D...H..
+ 4017a0 24600100 0048b86b 69726b2e 656e6331  $`...H.kirk.enc1
+ 4017b0 d2660f6f 05972500 0066c744 24700000  .f.o..%..f.D$p..
+ 4017c0 48c74424 72353030 000f1184 246c0100  H.D$r500....$l..
+ 4017d0 0066c744 247a0000 48c74424 7c313235  .f.D$z..H.D$|125
+ 4017e0 00660f6f 05772500 0066c784 24840000  .f.o.w%..f..$...
+ 4017f0 00000048 c7842486 00000030 0000000f  ...H..$....0....
+ 401800 29842480 01000066 c784248e 00000000  ).$....f..$.....
+ 401810 00c78424 40010000 00000000 660f6f05  ...$@.......f.o.
+ 401820 4c250000 c7842454 01000000 000000c7  L%....$T........
+ 401830 84246801 00000000 00000f11 8424a801  .$h..........$..
+ 401840 0000c784 247c0100 00000000 00c78424  ....$|.........$
+ 401850 90010000 00000000 660f6f05 20250000  ........f.o. %..
+ 401860 48898424 94010000 48899424 9c010000  H..$....H..$....
+ 401870 0f118424 bc010000 c78424a4 01000000  ...$......$.....
+ 401880 000000c7 8424b801 00000000 0000c784  .....$..........
+ 401890 24cc0100 00000000 004a8d3c 2331c0ba  $........J.<#1..
+ 4018a0 80010000 be410200 00e8f2f6 ffff83f8  .....A..........
+ 4018b0 ff4189c7 0f84950b 000031c0 4c89ef4c  .A........1.L..L
+ 4018c0 89f1f2ae 4c89ee44 89ff4889 c848f7d0  ....L..D..H..H..
+ 4018d0 488d50ff e8a7f6ff ff4885c0 0f887d0c  H.P......H....}.
+ 4018e0 00004489 ffe8a6f4 ffff83c0 010f8498  ..D.............
+ 4018f0 0c000048 8d842430 01000049 83c50a4a  ...H..$0...I...J
+ 401900 8d3c2049 83c414e8 24f5ffff 4981fca0  .< I....$...I...
+ 401910 00000075 84e9aefb ffff660f 6f05ae23  ...u......f.o..#
+ 401920 000048b8 626f622e 64617461 31d24c8d  ..H.bob.data1.L.
+ 401930 a4243001 0000488d 9c249000 00000f11  .$0...H..$......
+ 401940 84244401 00004889 84243001 00004889  .$D...H..$0...H.
+ 401950 94243801 000031ed 660f6f05 80230000  .$8...1.f.o..#..
+ 401960 c7842440 01000000 000000c7 84245401  ..$@.........$T.
+ 401970 00000000 00000f11 84245801 0000c784  .........$X.....
+ 401980 24680100 00000000 00c78424 7c010000  $h.........$|...
+ 401990 00000000 660f6f05 54230000 c7842490  ....f.o.T#....$.
+ 4019a0 01000000 000000c7 8424a401 00000000  .........$......
+ 4019b0 00000f11 84246c01 0000c784 24b80100  .....$l.....$...
+ 4019c0 00000000 00660f6f 05332300 000f2984  .....f.o.3#...).
+ 4019d0 24800100 00660f6f 05332300 000f1184  $....f.o.3#.....
+ 4019e0 24940100 00660f6f 05332300 000f1184  $....f.o.3#.....
+ 4019f0 24a80100 004c89e7 be110000 004983c4  $....L.......I..
+ 401a00 14e8eaf9 ffff8904 ab4883c5 014883fd  .........H...H..
+ 401a10 0775e248 c7442408 01000000 4531f6c7  .u.H.D$.....E1..
+ 401a20 04240100 0000428b 2cb331c0 be030000  .$....B.,.1.....
+ 401a30 0089efe8 58f5ffff 83c0010f 857c0e00  ....X........|..
+ 401a40 00e89af4 ffff8338 09488944 24100f85  .......8.H.D$...
+ 401a50 b30e0000 4c632424 488b7424 084989f7  ....Lc$$H.t$.I..
+ 401a60 4589e549 83c43345 29f54929 f4eb2143  E..I..3E).I)..!C
+ 401a70 8d543d00 428b34bb 89ef80e2 01740489  .T=.B.4......t..
+ 401a80 f789ee4b 8d143c49 83c701e8 00f9ffff  ...K..<I........
+ 401a90 4183ff07 75d98b04 24488344 24080183  A...u...$H.D$...
+ 401aa0 c0064429 f04983c6 014983fe 07890424  ..D).I...I.....$
+ 401ab0 0f8570ff ffff488b 0d5b2820 00ba0c00  ..p...H..[( ....
+ 401ac0 0000be01 000000bf a43c4000 31ede88d  .........<@.1...
+ 401ad0 f4ffff44 8b24ab31 c0be0300 00004489  ...D.$.1......D.
+ 401ae0 e7e8aaf4 ffff83c0 010f85ce 0d000048  ...............H
+ 401af0 8b442410 8338090f 850a0e00 004489e7  .D$..8.......D..
+ 401b00 e88bf2ff ff83c001 0f84bc17 000031c0  ..............1.
+ 401b10 be030000 004489e7 e873f4ff ff83c001  .....D...s......
+ 401b20 0f854214 00004883 c5014883 fd0775a3  ..B...H...H...u.
+ 401b30 31ede991 f9ffffbe 40114000 bf110000  1.......@.@.....
+ 401b40 0066c784 24900000 003100e8 80f3ffff  .f..$....1......
+ 401b50 e8cbf3ff ffb91e00 00004899 31ed48f7  ..........H.1.H.
+ 401b60 f9448d62 0aeb19e8 e4f3ffff 83f8ff0f  .D.b............
+ 401b70 84731400 0085c00f 849c1400 0083c501  .s..............
+ 401b80 4439e57c e2c78424 30010000 00000000  D9.|...$0.......
+ 401b90 4c8dbc24 30010000 eb0f8b05 98272000  L..$0........' .
+ 401ba0 83c00189 058f2720 004c89ff e8eff1ff  ......' .L......
+ 401bb0 ff83c001 75e4e825 f3ffff8b 384889c3  ....u..%....8H..
+ 401bc0 83ff0a0f 84e01400 00e8c2f2 ffff8b13  ................
+ 401bd0 488b3d41 27200048 89c1be70 3b400031  H.=A' .H...p;@.1
+ 401be0 c0bd3600 0000e885 f3ffffe9 d8f8ffff  ..6.............
+ 401bf0 488b0d21 272000ba 28000000 be010000  H..!' ..(.......
+ 401c00 00bfc836 4000488d ac249000 00004c8d  ...6@.H..$....L.
+ 401c10 ac243001 0000488d 5c244045 31ff4531  .$0...H.\$@E1.E1
+ 401c20 f6e83af3 ffff660f 6f05a220 000048b8  ..:...f.o.. ..H.
+ 401c30 626f622e 64617461 31d24889 84249000  bob.data1.H..$..
+ 401c40 000048b8 626f622e 656e6300 0f118424  ..H.bob.enc....$
+ 401c50 a4000000 48899424 98000000 31d24889  ....H..$....1.H.
+ 401c60 84243001 000048b8 7269636b 2e656e63  .$0...H.rick.enc
+ 401c70 660f6f05 68200000 48899424 38010000  f.o.h ..H..$8...
+ 401c80 31d24889 84245801 00000f11 8424b800  1.H..$X......$..
+ 401c90 00004889 94246001 0000c784 24a00000  ..H..$`.....$...
+ 401ca0 00000000 0048b86b 69726b2e 656e6331  .....H.kirk.enc1
+ 401cb0 d2660f6f 05372000 00c78424 b4000000  .f.o.7 ....$....
+ 401cc0 00000000 c78424c8 00000000 0000000f  ......$.........
+ 401cd0 118424cc 000000c7 8424dc00 00000000  ..$......$......
+ 401ce0 0000c784 24f00000 00000000 00660f6f  ....$........f.o
+ 401cf0 050b2000 00c78424 04010000 00000000  .. ....$........
+ 401d00 c7842418 01000000 0000000f 298424e0  ..$.........).$.
+ 401d10 000000c7 84242c01 00000000 0000c784  .....$,.........
+ 401d20 24400100 00000000 00660f6f 05df1f00  $@.......f.o....
+ 401d30 00c78424 54010000 00000000 0f118424  ...$T..........$
+ 401d40 f4000000 660f6f05 d41f0000 0f118424  ....f.o........$
+ 401d50 08010000 660f6f05 d41f0000 0f118424  ....f.o........$
+ 401d60 1c010000 660f6f05 d41f0000 0f118424  ....f.o........$
+ 401d70 44010000 c7842468 01000000 00000048  D.....$h.......H
+ 401d80 89842494 01000048 8d85a000 0000660f  ..$....H......f.
+ 401d90 6f05ba1f 0000c784 247c0100 00000000  o.......$|......
+ 401da0 00c78424 90010000 00000000 0f118424  ...$...........$
+ 401db0 6c010000 48899424 9c010000 c78424a4  l...H..$......$.
+ 401dc0 01000000 00000066 0f6f0591 1f0000c7  .......f.o......
+ 401dd0 8424b801 00000000 0000c784 24cc0100  .$..........$...
+ 401de0 00000000 000f2984 24800100 00488904  ......).$....H..
+ 401df0 24660f6f 05771f00 000f1184 24a80100  $f.o.w......$...
+ 401e00 00660f6f 05771f00 000f1184 24bc0100  .f.o.w......$...
+ 401e10 0031f631 c04889ef e883f1ff ff83f8ff  .1.1.H..........
+ 401e20 4189c40f 84260600 00ba1400 00004889  A....&........H.
+ 401e30 de89c7e8 b8efffff 4883f8ff 0f849d0e  ........H.......
+ 401e40 00004489 e7c64404 4000e841 efffff83  ..D...D.@..A....
+ 401e50 c0010f84 f90a0000 ba0a0000 0031f648  .............1.H
+ 401e60 89dfe849 f0ffff48 9831f64c 89ef4901  ...I...H.1.L..I.
+ 401e70 c631c0e8 28f1ffff 83f8ff41 89c44889  .1..(......A..H.
+ 401e80 d94889ea 0f84ad03 0000488b 3d872420  .H........H.=.$ 
+ 401e90 00be2837 400031c0 e8d3f0ff ffba1400  ..(7@.1.........
+ 401ea0 00004889 de4489e7 e843efff ff4883f8  ..H..D...C...H..
+ 401eb0 ff0f8478 050000c6 44044000 31c931f6  ...x....D.@.1.1.
+ 401ec0 eb0631d6 4883c101 0fb6540d 0080fa2e  ..1.H.....T.....
+ 401ed0 75f04889 daeb0740 30324883 c2014889  u.H....@02H...H.
+ 401ee0 d14829d9 4839c877 ee31f6ba 0a000000  .H).H9.w.1......
+ 401ef0 4889dfe8 b8efffff 488b3d19 24200048  H.......H.=.$ .H
+ 401f00 984889da 4901c7be 153c4000 31c0e85d  .H..I....<@.1..]
+ 401f10 f0ffff44 89e7e875 eeffff83 c0010f84  ...D...u........
+ 401f20 2d0a0000 4883c514 4983c514 483b2c24  -...H...I...H;,$
+ 401f30 0f85dbfe ffff4d85 ff488b3d d8232000  ......M..H.=.# .
+ 401f40 0f846109 00004c89 f94c89f2 be703740  ..a...L..L...p7@
+ 401f50 0031c031 ede816f0 ffffe969 f5ffff66  .1.1.......i...f
+ 401f60 0f6f0569 1d000048 b8626f62 2e646174  .o.i...H.bob.dat
+ 401f70 6131d248 89842430 0100004c 8dbc2430  a1.H..$0...L..$0
+ 401f80 0100000f 11842444 01000048 83c8ff48  ......$D...H...H
+ 401f90 89942438 010000c7 84244001 00000000  ..$8.....$@.....
+ 401fa0 000049bc 25499224 49922449 660f6f05  ..I.%I.$I.$If.o.
+ 401fb0 2c1d0000 c7842454 01000000 000000c7  ,.....$T........
+ 401fc0 84246801 00000000 00000f11 84245801  .$h..........$X.
+ 401fd0 0000c784 247c0100 00000000 00c78424  ....$|.........$
+ 401fe0 90010000 00000000 660f6f05 001d0000  ........f.o.....
+ 401ff0 c78424a4 01000000 000000c7 8424b801  ..$..........$..
+ 402000 00000000 00000f11 84246c01 00004889  .........$l...H.
+ 402010 84249000 00004889 84249800 0000660f  .$....H..$....f.
+ 402020 6f05da1c 00004889 8424a000 00004889  o.....H..$....H.
+ 402030 8424a800 00000f29 84248001 00004889  .$.....).$....H.
+ 402040 8424b000 00004889 8424b800 0000660f  .$....H..$....f.
+ 402050 6f05ba1c 00004889 8424c000 00008944  o.....H..$.....D
+ 402060 241c0f11 84249401 0000660f 6f05ae1c  $....$....f.o...
+ 402070 00000f11 8424a801 0000e8a1 eeffffbb  .....$..........
+ 402080 07000000 489948f7 fb4889d5 4189d5e8  ....H.H..H..A...
+ 402090 8ceeffff 489948f7 fb39d548 63da752e  ....H.H..9.Hc.u.
+ 4020a0 e87beeff ff4889c1 49f7ec48 89c848c1  .{...H..I..H..H.
+ 4020b0 f83f48d1 fa4829c2 488d04d5 00000000  .?H..H).H.......
+ 4020c0 4829d048 29c14139 cd4863d9 74d2486b  H).H).A9.Hc.t.Hk
+ 4020d0 fd14be16 0000004c 01ffe811 f3ffff48  .......L.......H
+ 4020e0 6bfb14be 17000000 4189c64c 01ffe8fd  k.......A..L....
+ 4020f0 f2ffff44 89f74189 c5e8a2f0 ffff4489  ...D..A.......D.
+ 402100 ef488904 24e896f0 ffff4c63 c5488b14  .H..$.....Lc.H..
+ 402110 244a8b8c c4900000 004883f9 ff741f29  $J.......H...t.)
+ 402120 d189cec1 fe1f31f1 29f183f9 040f8faf  ......1.).......
+ 402130 07000048 63ca4a89 8cc49000 0000488b  ...Hc.J.......H.
+ 402140 8cdc9000 00004883 f9ff7414 29c189ce  ......H...t.)...
+ 402150 c1fe1f31 f129f183 f9040f8f cc070000  ...1.)..........
+ 402160 83fa090f 8ec50000 0081faf4 010000b9  ................
+ 402170 28000000 be0a0000 000f4ece bd010000  (.........N.....
+ 402180 0083f863 7f0d807c 241800be 00000000  ...c...|$.......
+ 402190 0f45ce29 ca01c844 89f74863 d24c8944  .E.)...D..Hc.L.D
+ 4021a0 24108904 244889d6 48895424 08e8aef0  $...$H..H.T$....
+ 4021b0 ffff4863 04244489 ef4889c6 48890424  ..Hc.$D..H..H..$
+ 4021c0 e89bf0ff ff488b54 24084c8b 44241044  .....H.T$.L.D$.D
+ 4021d0 89f7488b 04244a89 94c49000 00004889  ..H..$J.......H.
+ 4021e0 84dc9000 0000e8a5 ebffff83 c0010f84  ................
+ 4021f0 cc100000 4489efe8 94ebffff 83c0010f  ....D...........
+ 402200 84b11000 00834424 1c0185ed 0f8568fe  ......D$......h.
+ 402210 ffff8b54 241c488b 3d032120 00beb13c  ...T$.H.=.! ...<
+ 402220 400031c0 e847edff ffe99af2 ffff31c9  @.1..G........1.
+ 402230 31ede94a ffffff48 8b3dda20 2000beff  1..J...H.=.  ...
+ 402240 3b400031 c0e826ed ffffe9d5 fcffffbf  ;@.1..&.........
+ 402250 0a000000 4983ceff 31dbe8a1 ebffff49  ....I...1......I
+ 402260 89c448b8 73747564 656e7400 49890424  ..H.student.I..$
+ 402270 e83bebff ff4c89f1 4989c748 89c789d8  .;...L..I..H....
+ 402280 f2ae48f7 d1488d79 064889cd e86febff  ..H..H.y.H...o..
+ 402290 ff488d78 064889ea 4c89fec7 00747572  .H.x.H..L....tur
+ 4022a0 7466c740 046c6549 89c5e811 ecffff4c  tf.@.leI.......L
+ 4022b0 89e6bfa0 37400031 c0e8c2ea ffff488b  ....7@.1......H.
+ 4022c0 3d4b2020 00488d94 24300100 00be373c  =K  .H..$0....7<
+ 4022d0 400031c0 48c78424 30010000 00000000  @.1.H..$0.......
+ 4022e0 e84becff ff4c8bbc 24300100 004c89ee  .K...L..$0...L..
+ 4022f0 4c89ffe8 f8ebffff 85c089c5 0f847e01  L.............~.
+ 402300 0000488b 0d0f2020 00ba1d00 0000be01  ..H...  ........
+ 402310 000000bf 3b3c4000 bd0c0000 00e83eec  ....;<@.......>.
+ 402320 ffffe9a1 f1ffffbf a8384000 e88feaff  .........8@.....
+ 402330 ffbe713c 4000bf74 3c4000e8 d0eaffff  ..q<@..t<@......
+ 402340 4885c049 89c40f84 f7090000 be713c40  H..I.........q<@
+ 402350 00bf7d3c 4000e8b5 eaffff48 85c04989  ..}<@......H..I.
+ 402360 c50f840d 0a00004c 89e7bb64 000000e8  .......L...d....
+ 402370 fce9ffff 89c7e825 eeffff4c 89ef4989  .......%...L..I.
+ 402380 c6e8eae9 ffff89c7 e813eeff ff4c89f2  .............L..
+ 402390 4889c548 89c6bf88 3c400031 c0e8dee9  H..H....<@.1....
+ 4023a0 ffff4883 fd64bf38 39400048 0f42dd31  ..H..d.89@.H.B.1
+ 4023b0 c04889de 4829dd4c 01f3e8c1 e9ffff4c  .H..H).L.......L
+ 4023c0 89e7e8a9 e9ffff48 89de89c7 e88feeff  .......H........
+ 4023d0 ff4c89ef e897e9ff ff4889ee 89c7e87d  .L.......H.....}
+ 4023e0 eeffff48 89da4889 eebf6039 400031c0  ...H..H...`9@.1.
+ 4023f0 e88be9ff ff4c89e7 e873e9ff ff89c7e8  .....L...s......
+ 402400 8ce9ffff 83c0010f 84c70e00 004c89ef  .............L..
+ 402410 e85be9ff ff89c7e8 74e9ffff 83c0010f  .[......t.......
+ 402420 8570f1ff ffbf0b00 0000e891 ebffff48  .p.............H
+ 402430 8b0de21e 2000ba1f 000000be 01000000  .... ...........
+ 402440 bf503740 00e816eb ffffe9d5 faffffe8  .P7@............
+ 402450 8ceaffff 8b384889 c3e832ea ffff8b13  .....8H...2.....
+ 402460 488b3db1 1e200048 89c1be30 36400031  H.=.. .H...06@.1
+ 402470 c0e8faea ffffbd04 000000e9 48f0ffff  ............H...
+ 402480 4c89ffe8 d8e9ffff 4c89ef48 c7842430  L.......L..H..$0
+ 402490 01000000 000000e8 c4e9ffff 89d84c89  ..............L.
+ 4024a0 e74c89f1 f2ae48f7 d1488d79 05488d59  .L....H..H.y.H.Y
+ 4024b0 ffe84ae9 ffff4989 c54889da 4c89e64c  ..J...I..H..L..L
+ 4024c0 01eb4889 c7e8f6e9 ffffc703 2e646174  ..H..........dat
+ 4024d0 66c74304 61004c89 e7e882e9 ffffbe59  f.C.a.L........Y
+ 4024e0 3c40004c 89efe825 e9ffff48 85c04889  <@.L...%...H..H.
+ 4024f0 c30f8419 08000048 8d942490 00000048  .......H..$....H
+ 402500 89c7bef8 3b400031 c0c78424 90000000  ....;@.1...$....
+ 402510 00000000 e817eaff ff4c89ef 4189c4e8  .........L..A...
+ 402520 3ce9ffff 4183ec01 0f843207 0000e8ad  <...A.....2.....
+ 402530 e9ffff8b 384889c3 bd060000 00e84ee9  ....8H........N.
+ 402540 ffff8b13 488b3dcd 1d200048 89c1bef0  ....H.=.. .H....
+ 402550 37400031 c0e816ea ffffe969 efffffe8  7@.1.......i....
+ 402560 7ce9ffff 8b384889 c3e822e9 ffff8b13  |....8H...".....
+ 402570 488b3da1 1d200048 89c1be60 36400031  H.=.. .H...`6@.1
+ 402580 c0e8eae9 ffffe9eb feffffe8 50e9ffff  ............P...
+ 402590 8b384889 c3e8f6e8 ffff8b13 488b3d75  .8H.........H.=u
+ 4025a0 1d200048 89c1be98 36400031 c0e8bee9  . .H....6@.1....
+ 4025b0 ffffe9bf feffff66 0f6f0511 17000048  .......f.o.....H
+ 4025c0 b8626f62 2e646174 61488984 24300100  .bob.dataH..$0..
+ 4025d0 0031d248 83c8ff0f 11842444 0100004c  .1.H......$D...L
+ 4025e0 8dbc2430 01000048 89942438 010000c7  ..$0...H..$8....
+ 4025f0 84244001 00000000 000041bc 08000000  .$@.......A.....
+ 402600 660f6f05 d8160000 c7842454 01000000  f.o.......$T....
+ 402610 000000c7 84246801 00000000 00000f11  .....$h.........
+ 402620 84245801 0000c784 247c0100 00000000  .$X.....$|......
+ 402630 00c78424 90010000 00000000 660f6f05  ...$........f.o.
+ 402640 ac160000 c78424a4 01000000 000000c7  ......$.........
+ 402650 8424b801 00000000 00000f11 84246c01  .$...........$l.
+ 402660 0000c784 24cc0100 00000000 00488984  ....$........H..
+ 402670 24900000 00660f6f 05831600 00488984  $....f.o.....H..
+ 402680 24980000 00488984 24a00000 000f2984  $....H..$.....).
+ 402690 24800100 00488984 24a80000 00488984  $....H..$....H..
+ 4026a0 24b00000 00660f6f 05631600 00488984  $....f.o.c...H..
+ 4026b0 24b80000 00488984 24c00000 000f1184  $....H..$.......
+ 4026c0 24940100 00488984 24c80000 00660f6f  $....H..$....f.o
+ 4026d0 054b1600 000f1184 24a80100 00660f6f  .K......$....f.o
+ 4026e0 054b1600 000f1184 24bc0100 00894424  .K......$.....D$
+ 4026f0 18e82ae8 ffff4989 c5e802e8 ffff89c0  ..*...I.........
+ 402700 4c01e848 9949f7fc 4989d589 d5e80ee8  L..H.I..I.......
+ 402710 ffff4989 c6e8e6e7 ffff89c0 4c01f048  ..I.........L..H
+ 402720 9949f7fc 4889d3eb 0de8f2e7 ffff4899  .I..H.........H.
+ 402730 49f7fc48 89d339eb 74ef4d63 edbe2300  I..H..9.t.Mc..#.
+ 402740 00004863 db496bfd 144c01ff e89fecff  ..Hc.Ik..L......
+ 402750 ff486bfb 14be2400 00004189 c64c01ff  .Hk...$...A..L..
+ 402760 e88becff ff4489f7 89c58904 24e82eea  .....D......$...
+ 402770 ffff89ef 48894424 08e822ea ffff4a8b  ....H.D$.."...J.
+ 402780 8cec9000 0000488b 54240848 83f9ff74  ......H.T$.H...t
+ 402790 1339d10f 85050800 004863ca 4a898cec  .9.......Hc.J...
+ 4027a0 90000000 488b8cdc 90000000 4883f9ff  ....H.......H...
+ 4027b0 741339c1 0f850908 00004863 c848898c  t.9.......Hc.H..
+ 4027c0 dc900000 0083fa09 0f8ed000 000081fa  ................
+ 4027d0 f4010000 b9280000 00be0a00 00000f4e  .....(.........N
+ 4027e0 cebd0100 000001c8 29ca4489 f7894424  ........).D...D$
+ 4027f0 104863c2 4889c648 89442408 e85feaff  .Hc.H..H.D$.._..
+ 402800 ff486374 24108b3c 24488974 2410e84d  .Hct$..<$H.t$..M
+ 402810 eaffff44 89f7e885 e9ffff48 39442408  ...D.......H9D$.
+ 402820 0f851d07 00008b3c 24e872e9 ffff4839  .......<$.r...H9
+ 402830 4424100f 85e50600 00488b44 24084489  D$.......H.D$.D.
+ 402840 f74a8984 ec900000 00488b44 24104889  .J.......H.D$.H.
+ 402850 84dc9000 0000e835 e5ffff83 c0010f84  .......5........
+ 402860 bb0a0000 8b3c24e8 24e5ffff 83c0010f  .....<$.$.......
+ 402870 84a00a00 00834424 180185ed 0f856ffe  ......D$......o.
+ 402880 ffff8b54 2418488b 3d931a20 00beb13c  ...T$.H.=.. ...<
+ 402890 400031c0 e8d7e6ff ffe92aec ffff31c9  @.1.......*...1.
+ 4028a0 31ede93f ffffff4c 89f2be1a 3c400031  1..?...L....<@.1
+ 4028b0 c0e8bae6 ffff31ed e90becff ff488b0d  ......1......H..
+ 4028c0 541a2000 ba2d0000 00be0100 0000bfb8  T. ..-..........
+ 4028d0 394000bd 0e000000 e883e6ff ffe9e6eb  9@..............
+ 4028e0 ffff488b 0d2f1a20 00ba3000 0000be01  ..H../. ..0.....
+ 4028f0 000000bf 183a4000 bd1a0000 00e85ee6  .....:@.......^.
+ 402900 ffffe9c1 ebffff48 8b0d0a1a 2000ba2e  .......H.... ...
+ 402910 000000be 01000000 bf883940 00bd0f00  ..........9@....
+ 402920 0000e839 e6ffffe9 9cebffff 488b0de5  ...9........H...
+ 402930 192000ba 30000000 be010000 00bf183a  . ..0..........:
+ 402940 4000bd1b 000000e8 14e6ffff e977ebff  @............w..
+ 402950 ffe88ae5 ffff8b38 4889c3bd 04000000  .......8H.......
+ 402960 e82be5ff ff8b1348 8b3daa19 20004889  .+.....H.=.. .H.
+ 402970 c1be9836 400031c0 e8f3e5ff ffe946eb  ...6@.1.......F.
+ 402980 ffff4183 fc020f84 25050000 488b7b10  ..A.....%...H.{.
+ 402990 ba0a0000 0031f648 8d9c2490 0000004c  .....1.H..$....L
+ 4029a0 8d7c2440 4531e4e8 04e5ffff 660f6f05  .|$@E1......f.o.
+ 4029b0 1c130000 4989c531 d248b862 6f622e64  ....I..1.H.bob.d
+ 4029c0 617461c7 84244001 00000000 00000f11  ata..$@.........
+ 4029d0 84244401 00004889 84243001 00004889  .$D...H..$0...H.
+ 4029e0 94243801 00004989 de660f6f 05ef1200  .$8...I..f.o....
+ 4029f0 00c78424 54010000 00000000 c7842468  ...$T.........$h
+ 402a00 01000000 0000000f 11842458 010000c7  ..........$X....
+ 402a10 84247c01 00000000 0000c784 24900100  .$|.........$...
+ 402a20 00000000 00660f6f 05c31200 00c78424  .....f.o.......$
+ 402a30 a4010000 00000000 c78424b8 01000000  ..........$.....
+ 402a40 0000000f 1184246c 010000c7 8424cc01  ......$l.....$..
+ 402a50 00000000 0000660f 6f05a212 00000f29  ......f.o......)
+ 402a60 84248001 0000660f 6f05a212 00000f11  .$....f.o.......
+ 402a70 84249401 0000660f 6f05a212 00000f11  .$....f.o.......
+ 402a80 8424a801 0000660f 6f05a212 00000f11  .$....f.o.......
+ 402a90 8424bc01 000031f6 4c89ff44 89e5e8bd  .$....1.L..D....
+ 402aa0 e2ffff83 c0010f84 a7070000 31f64c89  ............1.L.
+ 402ab0 f7e8aae2 ffff83c0 010f8463 070000e8  ...........c....
+ 402ac0 8ce4ffff 83f8ff0f 84240700 0085c00f  .........$......
+ 402ad0 840b0600 00418b3f 4983c401 4983c708  .....A.?I...I...
+ 402ae0 4983c608 e8a7e2ff ff418b7e fce89ee2  I........A.~....
+ 402af0 ffff4983 fc08759e 4531e4e9 28010000  ..I...u.E1..(...
+ 402b00 e81be4ff ffb92800 00004899 c7442430  ......(...H..D$0
+ 402b10 00000000 48f7f98d 42ec85c0 8944242c  ....H...B....D$,
+ 402b20 0f8e9902 00004863 ed488d74 2430ba04  ......Hc.H.t$0..
+ 402b30 0000008b 7cec44e8 44e4ffff 8bbcec90  ....|.D.D.......
+ 402b40 00000048 8d74243c ba040000 00c74424  ...H.t$<......D$
+ 402b50 3c000000 00e896e2 ffff8b44 243c3b44  <..........D$<;D
+ 402b60 242c0f8c ad020000 8b44242c 4d63f642  $,.......D$,Mc.B
+ 402b70 8b7cf444 488d7424 2cf7d8ba 04000000  .|.DH.t$,.......
+ 402b80 89442434 e8f7e3ff ff8b7cec 44488d74  .D$4......|.DH.t
+ 402b90 2434ba04 000000e8 e4e3ffff 428bbcf4  $4..........B...
+ 402ba0 90000000 488d7424 38ba0400 0000c744  ....H.t$8......D
+ 402bb0 24380000 0000c744 243c0000 0000e82d  $8.....D$<.....-
+ 402bc0 e2ffff8b bcec9000 0000488d 74243cba  ..........H.t$<.
+ 402bd0 04000000 e817e2ff ff486bc5 148b4c24  .........Hk...L$
+ 402be0 2c488db4 24300100 00496bd6 144801f0  ,H..$0...Ik..H..
+ 402bf0 4801f285 c90f8eaa 01000048 83ec0849  H..........H...I
+ 402c00 89d14889 c28b7424 4056448b 44244c48  ..H...t$@VD.D$LH
+ 402c10 8b3d0a17 2000bef8 3a400031 c0e84ee3  .=.. ...:@.1..N.
+ 402c20 ffff585a 4183c401 4539ec0f 8df00100  ..XZA...E9......
+ 402c30 00e8eae2 ffff41bf 07000000 489949f7  ......A.....H.I.
+ 402c40 ff4989d6 e8d7e2ff ff489949 f7ff4139  .I.......H.I..A9
+ 402c50 d64889d5 0f85a6fe ffff4183 ec01ebc4  .H........A.....
+ 402c60 8b942490 00000048 8b3db216 200083fa  ..$....H.=.. ...
+ 402c70 7d0f8416 030000be 18384000 31c0e8ed  }........8@.1...
+ 402c80 e2ffff8b 94249000 0000488b 3d8f1620  .....$....H.=.. 
+ 402c90 00be5038 400031c0 e8d3e2ff ff4889df  ..P8@.1......H..
+ 402ca0 e86be2ff ff83c001 0f851ae8 ffffe82d  .k.............-
+ 402cb0 e2ffff8b 384889c3 bd090000 00e8cee1  ....8H..........
+ 402cc0 ffff8b13 488b3d4d 16200048 89c1be80  ....H.=M. .H....
+ 402cd0 38400031 c0e896e2 ffffe9e9 e7ffffe8  8@.1............
+ 402ce0 fce1ffff 8b384889 c3bddc05 0000e89d  .....8H.........
+ 402cf0 e1ffff8b 13488b3d 1c162000 4889c1be  .....H.=.. .H...
+ 402d00 f8364000 31c0e865 e2ffffe9 b8e7ffff  .6@.1..e........
+ 402d10 e8cbe1ff ff8b3848 89c3bd05 000000e8  ......8H........
+ 402d20 6ce1ffff 8b0b488b 3deb1520 004989c0  l.....H.=.. .I..
+ 402d30 31d2bec8 37400031 c0e832e2 ffffe985  1...7@.1..2.....
+ 402d40 e7ffffe8 98e1ffff 8b384889 c3bd0700  .........8H.....
+ 402d50 0000e839 e1ffff8b 13488b3d b8152000  ...9.....H.=.. .
+ 402d60 4889c1be d0384000 31c0e801 e2ffffe9  H....8@.1.......
+ 402d70 54e7ffff e867e1ff ff8b3848 89c3bd08  T....g....8H....
+ 402d80 000000e8 08e1ffff 8b13488b 3d871520  ..........H.=.. 
+ 402d90 004889c1 be003940 0031c0e8 d0e1ffff  .H....9@.1......
+ 402da0 e923e7ff ff4883ec 084989c1 8b4c2444  .#...H...I...L$D
+ 402db0 51448b44 24488b4c 2444e950 feffff4d  QD.D$H.L$D.P...M
+ 402dc0 63f6488d 742430ba 04000000 428b7cf4  c.H.t$0.....B.|.
+ 402dd0 44e8aae1 ffff428b bcf49000 0000488d  D.....B.......H.
+ 402de0 74243cba 04000000 c744243c 00000000  t$<......D$<....
+ 402df0 e8fbdfff ff8b4424 2c8b5424 3c89c1f7  ......D$,.T$<...
+ 402e00 d939d17e 0889d0f7 d8894424 2c4863ed  .9.~......D$,Hc.
+ 402e10 e95afdff ff894424 2c4d63f6 e94efdff  .Z....D$,Mc..N..
+ 402e20 ff4c8d64 244431ed 418b3c2c e85fdfff  .L.d$D1.A.<,._..
+ 402e30 ff8b3c2b 4883c508 e853dfff ff4883fd  ..<+H....S...H..
+ 402e40 4075e5c7 44243c00 00000048 8d7c243c  @u..D$<....H.|$<
+ 402e50 e84bdfff ff83c001 75f1488b 0db71420  .K......u.H.... 
+ 402e60 00bf303b 4000ba3a 000000be 01000000  ..0;@..:........
+ 402e70 31ede8e9 e0ffffe8 64e0ffff 8b384889  1.......d....8H.
+ 402e80 c383ff0a 0f843ee6 ffffe801 e0ffff8b  ......>.........
+ 402e90 13488b3d 80142000 4889c1be 703b4000  .H.=.. .H...p;@.
+ 402ea0 31c0bd35 000000e8 c4e0ffff e917e6ff  1..5............
+ 402eb0 ff488b3b 488db424 30010000 48c78424  .H.;H..$0...H..$
+ 402ec0 38010000 c83c4000 48c78424 40010000  8....<@.H..$@...
+ 402ed0 ca3c4000 48c78424 48010000 00000000  .<@.H..$H.......
+ 402ee0 bd2e0000 004889bc 24300100 00e8dede  .....H..$0......
+ 402ef0 ffffe8e9 dfffff8b 384889c3 e88fdfff  ........8H......
+ 402f00 ff8b1348 8b3d0e14 20004889 c1be503a  ...H.=.. .H...P:
+ 402f10 400031c0 e857e0ff ffe9aae5 ffff488b  @.1..W........H.
+ 402f20 0df31320 00ba3000 0000be01 000000bf  ... ..0.........
+ 402f30 183a4000 bd210000 00e822e0 ffffe985  .:@..!....".....
+ 402f40 e5ffff48 8b0dce13 2000ba30 000000be  ...H.... ..0....
+ 402f50 01000000 bf183a40 00bd1c00 0000e8fd  ......:@........
+ 402f60 dfffffe9 60e5ffff 488b0da9 132000ba  ....`...H.... ..
+ 402f70 2a000000 be010000 00bfe839 4000bd10  *..........9@...
+ 402f80 000000e8 d8dfffff e93be5ff ffbe5b3c  .........;....[<
+ 402f90 400031c0 e8d7dfff ffe9fffc ffff488b  @.1...........H.
+ 402fa0 0d731320 00ba3000 0000be01 000000bf  .s. ..0.........
+ 402fb0 183a4000 bd200000 00e8a2df ffffe905  .:@.. ..........
+ 402fc0 e5ffff48 8b0d4e13 2000ba30 000000be  ...H..N. ..0....
+ 402fd0 01000000 bf183a40 00bd1f00 0000e87d  ......:@.......}
+ 402fe0 dfffffe9 e0e4ffff e8f3deff ff8b3848  ..............8H
+ 402ff0 89c3bd30 000000e8 94deffff 8b13488b  ...0..........H.
+ 403000 3d131320 004889c1 be983b40 0031c0e8  =.. .H....;@.1..
+ 403010 5cdfffff e9afe4ff ff31f6bf 11000000  \........1......
+ 403020 bd070000 00e8a6de ffff488b 0348c784  ..........H..H..
+ 403030 24400100 00000000 00488984 24300100  $@.......H..$0..
+ 403040 00488d84 24900000 00488984 24380100  .H..$....H..$8..
+ 403050 00e8cade ffff4899 48f7fd48 83fa0274  ......H.H..H...t
+ 403060 f0488b3b 488db424 30010000 00942490  .H.;H..$0.....$.
+ 403070 000000bd 34000000 e853ddff ffe85ede  ....4....S....^.
+ 403080 ffff8b38 4889c3e8 04deffff 8b13488b  ...8H.........H.
+ 403090 3d831220 004889c1 be503a40 0031c0e8  =.. .H...P:@.1..
+ 4030a0 ccdeffff e91fe4ff ff8b0589 12200031  ............. .1
+ 4030b0 ed4439e0 0f840ee4 ffff8b0d 78122000  .D9.........x. .
+ 4030c0 488b3d51 12200044 89e2beb8 3b400031  H.=Q. .D....;@.1
+ 4030d0 c0bd3700 0000e895 deffffe9 e8e3ffff  ..7.............
+ 4030e0 4531ed49 63dceb15 e8a3dcff ff8bbcdc  E1.Ic...........
+ 4030f0 90000000 4183c501 e893dcff ff4139ed  ....A........A9.
+ 403100 8b7cdc44 75e2e885 dcffff8b bcdc9000  .|.Du...........
+ 403110 0000e879 dcffff49 6bc4148d 75644c8d  ...y...Ik...udL.
+ 403120 b4043001 00004c89 f7e8c2e2 ffff89c7  ..0...L.........
+ 403130 4189c5e8 68e0ffff c7442438 00000000  A...h....D$8....
+ 403140 4989c4eb 3c486354 24384901 d44889d0  I...<HcT$8I..H..
+ 403150 790a4429 e04531e4 89442438 8bbcdc94  y.D).E1..D$8....
+ 403160 00000048 8d74243c ba040000 00448964  ...H.t$<.....D.d
+ 403170 243ce809 deffff48 83f8040f 85030100  $<.....H........
+ 403180 008b7cdc 40488d74 2438ba04 000000e8  ..|.@H.t$8......
+ 403190 5cdcffff 4885c07f ac4883c0 010f8443  \...H....H.....C
+ 4031a0 0100004c 89e64489 efe8b2e0 ffff488b  ...L..D.......H.
+ 4031b0 3d631120 004c89f2 bed03a40 0031c0e8  =c. .L....:@.1..
+ 4031c0 acddffff 4489efe8 c4dbffff 83c0010f  ....D...........
+ 4031d0 84090100 008b7cdc 40e8b2db ffff8bbc  ......|.@.......
+ 4031e0 dc940000 00e8a6db ffff31ff e8efdbff  ..........1.....
+ 4031f0 ffe8eadc ffff8b38 4889c3bd 27000000  .......8H...'...
+ 403200 e88bdcff ff8b1348 8b3d0a11 20004889  .......H.=.. .H.
+ 403210 c1be703a 400031c0 e853ddff ffe9a6e2  ..p:@.1..S......
+ 403220 ffffe8b9 dcffff8b 384889c3 bd2f0000  ........8H.../..
+ 403230 00e85adc ffff8b13 488b3dd9 10200048  ..Z.....H.=.. .H
+ 403240 89c1be70 3a400031 c0e822dd ffffe975  ...p:@.1.."....u
+ 403250 e2ffffe8 88dcffff 8b384889 c3bd2600  .........8H...&.
+ 403260 0000e829 dcffff8b 13488b3d a8102000  ...).....H.=.. .
+ 403270 4889c1be 703a4000 31c0e8f1 dcffffe9  H...p:@.1.......
+ 403280 44e2ffff e857dcff ff8b3848 89c381c5  D....W....8H....
+ 403290 82000000 e8f7dbff ff8b1348 8b3d7610  ...........H.=v.
+ 4032a0 20004889 c1bea03a 400031c0 e8bfdcff   .H....:@.1.....
+ 4032b0 ffe912e2 ffffbf18 000000e8 00ddffff  ................
+ 4032c0 bf190000 00e8f6dc ffffbf0d 000000e8  ................
+ 4032d0 ecdcffff bf0a0000 00e8e2dc ffff8d7d  ...............}
+ 4032e0 6ee8dadc ffffe8f5 dbffff8b 384889c3  n...........8H..
+ 4032f0 83c578e8 98dbffff 8b13488b 3d171020  ..x.......H.=.. 
+ 403300 004889c1 bea03a40 0031c0e8 60dcffff  .H....:@.1..`...
+ 403310 e9b3e1ff ffbf1e00 0000e8a1 dcffffbf  ................
+ 403320 1d000000 e897dcff ff909090 90909090  ................
+ 403330 f3c36666 6666662e 0f1f8400 00000000  ..fffff.........
+ 403340 48896c24 d84c8964 24e0488d 2daf0c20  H.l$.L.d$.H.-.. 
+ 403350 004c8d25 a80c2000 4c896c24 e84c8974  .L.%.. .L.l$.L.t
+ 403360 24f04c89 7c24f848 895c24d0 4883ec38  $.L.|$.H.\$.H..8
+ 403370 4c29e541 89fd4989 f648c1fd 034989d7  L).A..I..H...I..
+ 403380 e8b3d9ff ff4885ed 741c31db 0f1f4000  .....H..t.1...@.
+ 403390 4c89fa4c 89f64489 ef41ff14 dc4883c3  L..L..D..A...H..
+ 4033a0 014839eb 72ea488b 5c240848 8b6c2410  .H9.r.H.\$.H.l$.
+ 4033b0 4c8b6424 184c8b6c 24204c8b 7424284c  L.d$.L.l$ L.t$(L
+ 4033c0 8b7c2430 4883c438 c3909090 90909090  .|$0H..8........
+ 4033d0 488b0529 0c200048 83f8ff74 33554889  H..). .H...t3UH.
+ 4033e0 e553bb00 40600048 83ec080f 1f440000  .S..@`.H.....D..
+ 4033f0 4883eb08 ffd0488b 034883f8 ff75f148  H.....H..H...u.H
+ 403400 83c4085b 5dc3662e 0f1f8400 00000000  ...[].f.........
+ 403410 f3c39090                             ....            
+hydra:~/cse303/p4% objdump --section=.text -s banker >aaa.txt
+hydra:~/cse303/p4% vim aaa.txt
+hydra:~/cse303/p4% objdump --section=.text -d -l banker >aaa.txt
+hydra:~/cse303/p4% vim aaa.txt
+hydra:~/cse303/p4% vim bbb.txt
+hydra:~/cse303/p4% strace -o bbb.txt ./banker 9
+STATUS: Reviewing baseline file set....
+STATUS: Account bob.data has 200
+STATUS: Account alice.data has 300
+STATUS: Account rick.data has 1500
+STATUS: Account morty.data has 55
+STATUS: Account picard.data has 500
+STATUS: Account kirk.data has 500
+STATUS: Account student.data has 125
+STATUS: Account hacker.data has 0
+STATUS: Total observed: 3180.
+hydra:~/cse303/p4% vim bbb.txt
+hydra:~/cse303/p4% strace -o bbb.txt ./banker 2
+Loading accounts for Alice and Bob....
+Alice has 300, Bob has 200
+Transferring 100 from Alice to Bob
+STATUS: Expected Alice/Bob: 200/300
+hydra:~/cse303/p4% vim bbb.txt
+hydra:~/cse303/p4% ./banker 0
+STATUS: Building baseline file set....
+hydra:~/cse303/p4% ./banker 9
+STATUS: Reviewing baseline file set....
+STATUS: Account bob.data has 200
+STATUS: Account alice.data has 300
+STATUS: Account rick.data has 1500
+STATUS: Account morty.data has 55
+STATUS: Account picard.data has 500
+STATUS: Account kirk.data has 500
+STATUS: Account student.data has 125
+STATUS: Account hacker.data has 0
+STATUS: Total observed: 3180.
+hydra:~/cse303/p4% ./banker 2
+Loading accounts for Alice and Bob....
+Alice has 300, Bob has 200
+Transferring 100 from Alice to Bob
+STATUS: Expected Alice/Bob: 200/300
+hydra:~/cse303/p4% ./banker 9
+STATUS: Reviewing baseline file set....
+STATUS: Account bob.data has 300
+STATUS: Account alice.data has 200
+STATUS: Account rick.data has 1500
+STATUS: Account morty.data has 55
+STATUS: Account picard.data has 500
+STATUS: Account kirk.data has 500
+STATUS: Account student.data has 125
+STATUS: Account hacker.data has 0
+STATUS: Total observed: 3180.
+hydra:~/cse303/p4% ./banker 0
+STATUS: Building baseline file set....
+hydra:~/cse303/p4% LD_PRELOAD=obj64/libpart2.so ./banker 2
+Loading accounts for Alice and Bob....
+Alice has 300, Bob has 200
+Transferring 100 from Alice to Bob
+STATUS: Expected Alice/Bob: 200/300
+Allocations made: 72704.
+Allocations made: 568.
+Allocations made: 568.
+hydra:~/cse303/p4% LD_PRELOAD=obj64/libpart2.so ./banker 9
+STATUS: Reviewing baseline file set....
+STATUS: Account bob.data has 100
+STATUS: Account alice.data has 400
+STATUS: Account rick.data has 1500
+STATUS: Account morty.data has 55
+STATUS: Account picard.data has 500
+STATUS: Account kirk.data has 500
+STATUS: Account student.data has 125
+STATUS: Account hacker.data has 0
+STATUS: Total observed: 3180.
+Allocations made: 72704.
+hydra:~/cse303/p4% strace -o bbb.txt ./banker 3
+STATUS: File system has NOT been compromised
+hydra:~/cse303/p4% strace -o bbb.txt ./banker 4
+^C
+hydra:~/cse303/p4% rm bbb.txt
+hydra:~/cse303/p4% strace -o bbb.txt ./banker 4
+Total trades made: 9
+hydra:~/cse303/p4% ^C
+hydra:~/cse303/p4% vim bbb.txt
+hydra:~/cse303/p4% strace -o bbb.txt ./banker 0
+STATUS: Building baseline file set....
+hydra:~/cse303/p4% strace -o bbb.txt ./banker 4
+^C
+hydra:~/cse303/p4% vim bbb.txt
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% ./banker 0
+STATUS: Building baseline file set....
+hydra:~/cse303/p4% ./banker 9
+STATUS: Reviewing baseline file set....
+STATUS: Account bob.data has 200
+STATUS: Account alice.data has 300
+STATUS: Account rick.data has 1500
+STATUS: Account morty.data has 55
+STATUS: Account picard.data has 500
+STATUS: Account kirk.data has 500
+STATUS: Account student.data has 125
+STATUS: Account hacker.data has 0
+STATUS: Total observed: 3180.
+hydra:~/cse303/p4% LD_PRELOAD=obj64/libpart2.so ./banker 4
+filedata3=190,filedata4=310,gap=6
+hackerfd=5
+hackerdata=6filedata3=187filedata4=307filedata3=490,filedata4=135,gap=6
+hackerfd=5
+hackerdata=12filedata3=487filedata4=132filedata3=490,filedata4=65,gap=6
+hackerfd=5
+hackerdata=18filedata3=487filedata4=62filedata3=477,filedata4=1510,gap=6
+hackerfd=5
+hackerdata=24filedata3=474filedata4=1507filedata3=177,filedata4=484,gap=6
+hackerfd=5
+hackerdata=30filedata3=174filedata4=481filedata3=1467,filedata4=172,gap=6
+hackerfd=5
+hackerdata=36filedata3=1464filedata4=169filedata3=477,filedata4=317,gap=6
+hackerfd=5
+hackerdata=42filedata3=474filedata4=314filedata3=464,filedata4=491,gap=6
+hackerfd=5
+hackerdata=48filedata3=461filedata4=488filedata3=304,filedata4=184,gap=6
+hackerfd=5
+hackerdata=54filedata3=301filedata4=181filedata3=1424,filedata4=221,gap=6
+hackerfd=5
+hackerdata=60filedata3=1421filedata4=218filedata3=451,filedata4=498,gap=6
+hackerfd=5
+hackerdata=66filedata3=448filedata4=495filedata3=1381,filedata4=258,gap=6
+hackerfd=5
+hackerdata=72filedata3=1378filedata4=255filedata3=159,filedata4=72,gap=6
+hackerfd=5
+hackerdata=78filedata3=156filedata4=69filedata3=146,filedata4=79,gap=6
+hackerfd=5
+hackerdata=84filedata3=143filedata4=76filedata3=1338,filedata4=488,gap=6
+hackerfd=5
+hackerdata=90filedata3=1335filedata4=485filedata3=133,filedata4=86,gap=6
+hackerfd=5
+hackerdata=96filedata3=130filedata4=83filedata3=291,filedata4=1345,gap=6
+hackerfd=5
+hackerdata=102filedata3=288filedata4=1342filedata3=1302,filedata4=123,gap=6
+hackerfd=5
+hackerdata=108filedata3=1299filedata4=120filedata3=475,filedata4=505,gap=6
+hackerfd=5
+hackerdata=114filedata3=472filedata4=502filedata3=120,filedata4=512,gap=6
+hackerfd=5
+hackerdata=120filedata3=117filedata4=509filedata3=278,filedata4=130,gap=6
+hackerfd=5
+hackerdata=126filedata3=275filedata4=127filedata3=107,filedata4=1309,gap=6
+hackerfd=5
+hackerdata=132filedata3=104filedata4=1306filedata3=265,filedata4=1316,gap=6
+hackerfd=5
+hackerdata=138filedata3=262filedata4=1313filedata3=252,filedata4=519,gap=6
+hackerfd=5
+hackerdata=144filedata3=249filedata4=516filedata3=1273,filedata4=556,gap=6
+hackerfd=5
+hackerdata=150filedata3=1270filedata4=553filedata3=1230,filedata4=593,gap=6
+hackerfd=5
+hackerdata=156filedata3=1227filedata4=590filedata3=239,filedata4=137,gap=6
+hackerfd=5
+hackerdata=162filedata3=236filedata4=134filedata3=124,filedata4=1237,gap=6
+hackerfd=5
+hackerdata=168filedata3=121filedata4=1234filedata3=462,filedata4=114,gap=6
+hackerfd=5
+hackerdata=174filedata3=459filedata4=111filedata3=1194,filedata4=151,gap=6
+hackerfd=5
+hackerdata=180filedata3=1191filedata4=148filedata3=449,filedata4=600,gap=6
+hackerfd=5
+hackerdata=186filedata3=446filedata4=597filedata3=138,filedata4=1201,gap=6
+hackerfd=5
+hackerdata=192filedata3=135filedata4=1198filedata3=226,filedata4=131,gap=6
+hackerfd=5
+hackerdata=198filedata3=223filedata4=128filedata3=213,filedata4=456,gap=6
+hackerfd=5
+hackerdata=204filedata3=210filedata4=453filedata3=118,filedata4=1208,gap=6
+hackerfd=5
+hackerdata=210filedata3=115filedata4=1205filedata3=125,filedata4=265,gap=6
+hackerfd=5
+hackerdata=216filedata3=122filedata4=262filedata3=105,filedata4=272,gap=6
+hackerfd=5
+hackerdata=222filedata3=102filedata4=269filedata3=1165,filedata4=162,gap=6
+hackerfd=5
+hackerdata=228filedata3=1162filedata4=159filedata3=259,filedata4=1172,gap=6
+hackerfd=5
+hackerdata=234filedata3=256filedata4=1169filedata3=92,filedata4=266,gap=6
+hackerfd=5
+hackerdata=240filedata3=89filedata4=263filedata3=557,filedata4=493,gap=6
+hackerfd=5
+hackerdata=246filedata3=554filedata4=490filedata3=149,filedata4=273,gap=6
+hackerfd=5
+hackerdata=252filedata3=146filedata4=270filedata3=200,filedata4=1179,gap=6
+hackerfd=5
+hackerdata=258filedata3=197filedata4=1176filedata3=514,filedata4=237,gap=6
+hackerfd=5
+hackerdata=264filedata3=511filedata4=234filedata3=1136,filedata4=129,gap=6
+hackerfd=5
+hackerdata=270filedata3=1133filedata4=126filedata3=471,filedata4=274,gap=6
+hackerfd=5
+hackerdata=276filedata3=468filedata4=271filedata3=480,filedata4=136,gap=6
+hackerfd=5
+hackerdata=282filedata3=477filedata4=133filedata3=123,filedata4=478,gap=6
+hackerfd=5
+hackerdata=288filedata3=120filedata4=475filedata3=136,filedata4=487,gap=6
+hackerfd=5
+hackerdata=294filedata3=133filedata4=484filedata3=123,filedata4=280,gap=6
+hackerfd=5
+hackerdata=300filedata3=120filedata4=277filedata3=110,filedata4=287,gap=6
+hackerfd=5
+hackerdata=306filedata3=107filedata4=284filedata3=97,filedata4=1143,gap=6
+hackerfd=5
+hackerdata=312filedata3=94filedata4=1140filedata3=474,filedata4=104,gap=6
+hackerfd=5
+hackerdata=318filedata3=471filedata4=101filedata3=461,filedata4=281,gap=6
+hackerfd=5
+hackerdata=324filedata3=458filedata4=278filedata3=268,filedata4=1150,gap=6
+hackerfd=5
+hackerdata=330filedata3=265filedata4=1147filedata3=448,filedata4=130,gap=6
+hackerfd=5
+hackerdata=336filedata3=445filedata4=127filedata3=91,filedata4=294,gap=6
+hackerfd=5
+hackerdata=342filedata3=88filedata4=291filedata3=465,filedata4=98,gap=6
+hackerfd=5
+hackerdata=348filedata3=462filedata4=95filedata3=1107,filedata4=331,gap=6
+hackerfd=5
+hackerdata=354filedata3=1104filedata4=328filedata3=435,filedata4=472,gap=6
+hackerfd=5
+hackerdata=360filedata3=432filedata4=469filedata3=85,filedata4=275,gap=6
+hackerfd=5
+hackerdata=366filedata3=82filedata4=272filedata3=422,filedata4=338,gap=6
+hackerfd=5
+hackerdata=372filedata3=419filedata4=335filedata3=325,filedata4=479,gap=6
+hackerfd=5
+hackerdata=378filedata3=322filedata4=476filedata3=466,filedata4=92,gap=6
+hackerfd=5
+hackerdata=384filedata3=463filedata4=89filedata3=262,filedata4=99,gap=6
+hackerfd=5
+hackerdata=390filedata3=259filedata4=96filedata3=117,filedata4=269,gap=6
+hackerfd=5
+hackerdata=396filedata3=114filedata4=266filedata3=453,filedata4=1114,gap=6
+hackerfd=5
+hackerdata=402filedata3=450filedata4=1111filedata3=1071,filedata4=362,gap=6
+hackerfd=5
+hackerdata=408filedata3=1068filedata4=359filedata3=256,filedata4=106,gap=6
+hackerfd=5
+hackerdata=414filedata3=253filedata4=103filedata3=1028,filedata4=154,gap=6
+hackerfd=5
+hackerdata=420filedata3=1025filedata4=151filedata3=93,filedata4=460,gap=6
+hackerfd=5
+hackerdata=426filedata3=90filedata4=457filedata3=349,filedata4=429,gap=6
+hackerfd=5
+hackerdata=432filedata3=346filedata4=426filedata3=416,filedata4=356,gap=6
+hackerfd=5
+hackerdata=438filedata3=413filedata4=353filedata3=403,filedata4=100,gap=6
+hackerfd=5
+hackerdata=444filedata3=400filedata4=97filedata3=985,filedata4=191,gap=6
+hackerfd=5
+hackerdata=450filedata3=982filedata4=188filedata3=942,filedata4=393,gap=6
+hackerfd=5
+hackerdata=456filedata3=939filedata4=390filedata3=447,filedata4=400,gap=6
+hackerfd=5
+hackerdata=462filedata3=444filedata4=397filedata3=434,filedata4=263,gap=6
+hackerfd=5
+hackerdata=468filedata3=431filedata4=260filedata3=87,filedata4=441,gap=6
+hackerfd=5
+hackerdata=474filedata3=84filedata4=438filedata3=899,filedata4=124,gap=6
+hackerfd=5
+hackerdata=480filedata3=896filedata4=121filedata3=178,filedata4=270,gap=6
+hackerfd=5
+hackerdata=486filedata3=175filedata4=267filedata3=165,filedata4=906,gap=6
+hackerfd=5
+hackerdata=492filedata3=162filedata4=903filedata3=257,filedata4=172,gap=6
+hackerfd=5
+hackerdata=498filedata3=254filedata4=169filedata3=244,filedata4=448,gap=6
+hackerfd=5
+hackerdata=504filedata3=241filedata4=445filedata3=387,filedata4=179,gap=6
+hackerfd=5
+hackerdata=510filedata3=384filedata4=176filedata3=390,filedata4=913,gap=6
+hackerfd=5
+hackerdata=516filedata3=387filedata4=910filedata3=166,filedata4=131,gap=6
+hackerfd=5
+hackerdata=522filedata3=163filedata4=128filedata3=377,filedata4=455,gap=6
+hackerfd=5
+hackerdata=528filedata3=374filedata4=452filedata3=153,filedata4=394,gap=6
+hackerfd=5
+hackerdata=534filedata3=150filedata4=391filedata3=118,filedata4=251,gap=6
+hackerfd=5
+hackerdata=540filedata3=115filedata4=248filedata3=381,filedata4=258,gap=6
+hackerfd=5
+hackerdata=546filedata3=378filedata4=255filedata3=364,filedata4=388,gap=6
+hackerfd=5
+hackerdata=552filedata3=361filedata4=385filedata3=870,filedata4=155,gap=6
+hackerfd=5
+hackerdata=558filedata3=867filedata4=152filedata3=827,filedata4=295,gap=6
+hackerfd=5
+hackerdata=564filedata3=824filedata4=292filedata3=784,filedata4=425,gap=6
+hackerfd=5
+hackerdata=570filedata3=781filedata4=422filedata3=282,filedata4=462,gap=6
+hackerfd=5
+hackerdata=576filedata3=279filedata4=459filedata3=351,filedata4=432,gap=6
+hackerfd=5
+hackerdata=582filedata3=348filedata4=429filedata3=142,filedata4=358,gap=6
+hackerfd=5
+hackerdata=588filedata3=139filedata4=355filedata3=449,filedata4=149,gap=6
+hackerfd=5
+hackerdata=594filedata3=446filedata4=146filedata3=741,filedata4=395,gap=6
+hackerfd=5
+hackerdata=600filedata3=738filedata4=392filedata3=269,filedata4=748,gap=6
+hackerfd=5
+hackerdata=606filedata3=266filedata4=745filedata3=436,filedata4=439,gap=6
+hackerfd=5
+hackerdata=612filedata3=433filedata4=436filedata3=382,filedata4=443,gap=6
+hackerfd=5
+hackerdata=618filedata3=379filedata4=440filedata3=705,filedata4=419,gap=6
+hackerfd=5
+hackerdata=624filedata3=702filedata4=416filedata3=430,filedata4=712,gap=6
+hackerfd=5
+hackerdata=630filedata3=427filedata4=709filedata3=417,filedata4=156,gap=6
+hackerfd=5
+hackerdata=636filedata3=414filedata4=153filedata3=669,filedata4=454,gap=6
+hackerfd=5
+hackerdata=642filedata3=666filedata4=451filedata3=406,filedata4=676,gap=6
+hackerfd=5
+hackerdata=648filedata3=403filedata4=673filedata3=140,filedata4=683,gap=6
+hackerfd=5
+hackerdata=654filedata3=137filedata4=680filedata3=393,filedata4=461,gap=6
+hackerfd=5
+hackerdata=660filedata3=390filedata4=458filedata3=143,filedata4=690,gap=6
+hackerfd=5
+hackerdata=666filedata3=140filedata4=687filedata3=256,filedata4=147,gap=6
+hackerfd=5
+hackerdata=672filedata3=253filedata4=144filedata3=448,filedata4=263,gap=6
+hackerfd=5
+hackerdata=678filedata3=445filedata4=260filedata3=134,filedata4=455,gap=6
+hackerfd=5
+hackerdata=684filedata3=131filedata4=452filedata3=121,filedata4=400,gap=6
+hackerfd=5
+hackerdata=690filedata3=118filedata4=397filedata3=442,filedata4=270,gap=6
+hackerfd=5
+hackerdata=696filedata3=439filedata4=267filedata3=387,filedata4=150,gap=6
+hackerfd=5
+hackerdata=702filedata3=384filedata4=147filedata3=374,filedata4=446,gap=6
+hackerfd=5
+hackerdata=708filedata3=371filedata4=443filedata3=257,filedata4=697,gap=6
+hackerfd=5
+hackerdata=714filedata3=254filedata4=694filedata3=244,filedata4=381,gap=6
+hackerfd=5
+hackerdata=720filedata3=241filedata4=378filedata3=368,filedata4=449,gap=6
+hackerfd=5
+hackerdata=726filedata3=365filedata4=446filedata3=137,filedata4=251,gap=6
+hackerfd=5
+hackerdata=732filedata3=134filedata4=248filedata3=436,filedata4=453,gap=6
+hackerfd=5
+hackerdata=738filedata3=433filedata4=450filedata3=423,filedata4=258,gap=6
+hackerfd=5
+hackerdata=744filedata3=420filedata4=255filedata3=410,filedata4=375,gap=6
+hackerfd=5
+hackerdata=750filedata3=407filedata4=372filedata3=397,filedata4=128,gap=6
+hackerfd=5
+hackerdata=756filedata3=394filedata4=125filedata3=384,filedata4=704,gap=6
+hackerfd=5
+hackerdata=762filedata3=381filedata4=701filedata3=245,filedata4=382,gap=6
+hackerfd=5
+hackerdata=768filedata3=242filedata4=379filedata3=115,filedata4=144,gap=6
+hackerfd=5
+hackerdata=774filedata3=112filedata4=141filedata3=131,filedata4=389,gap=6
+hackerfd=5
+hackerdata=780filedata3=128filedata4=386filedata3=232,filedata4=391,gap=6
+hackerfd=5
+hackerdata=786filedata3=229filedata4=388filedata3=118,filedata4=398,gap=6
+hackerfd=5
+hackerdata=792filedata3=115filedata4=395filedata3=219,filedata4=711,gap=6
+hackerfd=5
+hackerdata=798filedata3=216filedata4=708filedata3=105,filedata4=718,gap=6
+hackerfd=5
+hackerdata=804filedata3=102filedata4=715filedata3=385,filedata4=112,gap=6
+hackerfd=5
+hackerdata=810filedata3=382filedata4=109filedata3=376,filedata4=226,gap=6
+hackerfd=5
+hackerdata=816filedata3=373filedata4=223filedata3=363,filedata4=233,gap=6
+hackerfd=5
+hackerdata=822filedata3=360filedata4=230filedata3=675,filedata4=490,gap=6
+hackerfd=5
+hackerdata=828filedata3=672filedata4=487filedata3=102,filedata4=392,gap=6
+hackerfd=5
+hackerdata=834filedata3=99filedata4=389filedata3=220,filedata4=399,gap=6
+hackerfd=5
+hackerdata=840filedata3=217filedata4=396filedata3=99,filedata4=109,gap=6
+hackerfd=5
+hackerdata=846filedata3=96filedata4=106filedata3=86,filedata4=370,gap=6
+hackerfd=5
+hackerdata=852filedata3=83filedata4=367filedata3=96,filedata4=93,gap=6
+hackerfd=5
+hackerdata=858filedata3=93filedata4=90filedata3=386,filedata4=377,gap=6
+hackerfd=5
+hackerdata=864filedata3=383filedata4=374filedata3=83,filedata4=384,gap=6
+hackerfd=5
+hackerdata=870filedata3=80filedata4=381filedata3=80,filedata4=497,gap=6
+hackerfd=5
+hackerdata=876filedata3=77filedata4=494filedata3=632,filedata4=534,gap=6
+hackerfd=5
+hackerdata=882filedata3=629filedata4=531filedata3=589,filedata4=257,gap=6
+hackerfd=5
+hackerdata=888filedata3=586filedata4=254filedata3=491,filedata4=423,gap=6
+hackerfd=5
+hackerdata=894filedata3=488filedata4=420filedata3=67,filedata4=430,gap=6
+hackerfd=5
+hackerdata=900filedata3=64filedata4=427filedata3=478,filedata4=596,gap=6
+hackerfd=5
+hackerdata=906filedata3=475filedata4=593filedata3=54,filedata4=391,gap=6
+hackerfd=5
+hackerdata=912filedata3=51filedata4=388filedata3=244,filedata4=90,gap=6
+hackerfd=5
+hackerdata=918filedata3=241filedata4=87filedata3=378,filedata4=251,gap=6
+hackerfd=5
+hackerdata=924filedata3=375filedata4=248filedata3=238,filedata4=485,gap=6
+hackerfd=5
+hackerdata=930filedata3=235filedata4=482filedata3=41,filedata4=603,gap=6
+hackerfd=5
+hackerdata=936filedata3=38filedata4=600filedata3=417,filedata4=245,gap=6
+hackerfd=5
+hackerdata=942filedata3=414filedata4=242filedata3=28,filedata4=492,gap=6
+hackerfd=5
+hackerdata=948filedata3=25filedata4=489filedata3=15,filedata4=252,gap=6
+hackerfd=5
+hackerdata=954filedata3=12filedata4=249filedata3=365,filedata4=259,gap=6
+hackerfd=5
+hackerdata=960filedata3=362filedata4=256filedata3=2,filedata4=266,gap=6
+hackerfd=5
+hackerdata=965filedata3=0filedata4=263filedata3=253,filedata4=97,gap=6
+hackerfd=5
+hackerdata=971filedata3=250filedata4=94filedata3=0,filedata4=250,gap=6
+hackerfd=5
+hackerdata=974filedata3=0filedata4=247Total trades made: 162
+Allocations made: 72704.
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% ./banker 9
+STATUS: Reviewing baseline file set....
+STATUS: Account bob.data has 489
+STATUS: Account alice.data has 247
+STATUS: Account rick.data has 600
+STATUS: Account morty.data has 0
+STATUS: Account picard.data has 414
+STATUS: Account kirk.data has 362
+STATUS: Account student.data has 94
+STATUS: Account hacker.data has 974
+STATUS: Total observed: 3180.
+hydra:~/cse303/p4% make
+make: Nothing to be done for `all'.
+hydra:~/cse303/p4% emacs libpart2.c
+hydra:~/cse303/p4% make
+echo "[CC] libpart2.c --> obj64/libpart2.o"
+[CC] libpart2.c --> obj64/libpart2.o
+gcc libpart2.c -o obj64/libpart2.o -c -MMD -O0 -m64 -ggdb -D_GNU_SOURCE -fPIC
+libpart2.c: In function ‘open’:
+libpart2.c:50:15: warning: implicit declaration of function ‘atoi’ [-Wimplicit-function-declaration]
+  if(flags==0&&atoi(pathname)<10)
+               ^~~~
+echo "[CXX] obj64/libpart2.o obj64/part2_hash.o --> obj64/libpart2.so"
+[CXX] obj64/libpart2.o obj64/part2_hash.o --> obj64/libpart2.so
+g++ obj64/libpart2.o obj64/part2_hash.o -o obj64/libpart2.so -m64 -MMD -O0 -m64 -ggdb -D_GNU_SOURCE -std=gnu++17 -fPIC -shared -ldl
+hydra:~/cse303/p4% emacs libpart2.c
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% make
+echo "[CC] libpart2.c --> obj64/libpart2.o"
+[CC] libpart2.c --> obj64/libpart2.o
+gcc libpart2.c -o obj64/libpart2.o -c -MMD -O0 -m64 -ggdb -D_GNU_SOURCE -fPIC
+libpart2.c: In function ‘open’:
+libpart2.c:50:15: warning: implicit declaration of function ‘atoi’ [-Wimplicit-function-declaration]
+  if(flags==0&&atoi(pathname)<10)
+               ^~~~
+echo "[CXX] obj64/libpart2.o obj64/part2_hash.o --> obj64/libpart2.so"
+[CXX] obj64/libpart2.o obj64/part2_hash.o --> obj64/libpart2.so
+g++ obj64/libpart2.o obj64/part2_hash.o -o obj64/libpart2.so -m64 -MMD -O0 -m64 -ggdb -D_GNU_SOURCE -std=gnu++17 -fPIC -shared -ldl
+hydra:~/cse303/p4% emacs libpart2.c
+hydra:~/cse303/p4% make
+echo "[CC] libpart2.c --> obj64/libpart2.o"
+[CC] libpart2.c --> obj64/libpart2.o
+gcc libpart2.c -o obj64/libpart2.o -c -MMD -O0 -m64 -ggdb -D_GNU_SOURCE -fPIC
+libpart2.c:167:5: error: conflicting types for ‘random’
+ int random(int n)
+     ^~~~~~
+In file included from libpart2.c:1:0:
+/usr/include/stdlib.h:327:17: note: previous declaration of ‘random’ was here
+ extern long int random (void) __THROW;
+                 ^~~~~~
+make: *** [obj64/libpart2.o] Error 1
+hydra:~/cse303/p4% cd ..
+hydra:~/cse303% 
+hydra:~/cse303% 
+hydra:~/cse303% 
+hydra:~/cse303% 
+hydra:~/cse303% 
+hydra:~/cse303% cd p4
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% make
+echo "[CC] team.c --> obj64/team.o"
+[CC] team.c --> obj64/team.o
+gcc team.c -o obj64/team.o -c -MMD -O0 -m64 -ggdb -D_GNU_SOURCE -fPIC
+echo "[CC] libpart1.c --> obj64/libpart1.so"
+[CC] libpart1.c --> obj64/libpart1.so
+gcc libpart1.c -o obj64/libpart1.so -MMD -O0 -m64 -ggdb -D_GNU_SOURCE -fPIC -shared
+echo "[LD] obj64/part1a.o --> obj64/part1a"
+[LD] obj64/part1a.o --> obj64/part1a
+gcc obj64/part1a.o obj64/team.o obj64/support.o obj64/libpart1.so -o obj64/part1a -m64 -ldl -L./obj64/ -lpart1
+echo "[CC] part1b.c --> obj64/part1b.o"
+[CC] part1b.c --> obj64/part1b.o
+gcc part1b.c -o obj64/part1b.o -c -MMD -O0 -m64 -ggdb -D_GNU_SOURCE -fPIC
+echo "[LD] obj64/part1b.o --> obj64/part1b"
+[LD] obj64/part1b.o --> obj64/part1b
+gcc obj64/part1b.o obj64/team.o obj64/support.o -o obj64/part1b -m64 -ldl
+echo "[CC] libpart2.c --> obj64/libpart2.o"
+[CC] libpart2.c --> obj64/libpart2.o
+gcc libpart2.c -o obj64/libpart2.o -c -MMD -O0 -m64 -ggdb -D_GNU_SOURCE -fPIC
+libpart2.c: In function ‘open’:
+libpart2.c:50:15: warning: implicit declaration of function ‘atoi’ [-Wimplicit-function-declaration]
+  if(flags==0&&atoi(pathname)<10)
+               ^~~~
+echo "[CXX] obj64/libpart2.o obj64/part2_hash.o --> obj64/libpart2.so"
+[CXX] obj64/libpart2.o obj64/part2_hash.o --> obj64/libpart2.so
+g++ obj64/libpart2.o obj64/part2_hash.o -o obj64/libpart2.so -m64 -MMD -O0 -m64 -ggdb -D_GNU_SOURCE -std=gnu++17 -fPIC -shared -ldl
+hydra:~/cse303/p4% emacs libpart2.c
+hydra:~/cse303/p4% make
+echo "[CC] libpart2.c --> obj64/libpart2.o"
+[CC] libpart2.c --> obj64/libpart2.o
+gcc libpart2.c -o obj64/libpart2.o -c -MMD -O0 -m64 -ggdb -D_GNU_SOURCE -fPIC
+libpart2.c:167:5: error: conflicting types for ‘random’
+ int random(int n)
+     ^~~~~~
+In file included from libpart2.c:1:0:
+/usr/include/stdlib.h:327:17: note: previous declaration of ‘random’ was here
+ extern long int random (void) __THROW;
+                 ^~~~~~
+make: *** [obj64/libpart2.o] Error 1
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% emacs libpart2.c
+hydra:~/cse303/p4% make
+echo "[CC] libpart2.c --> obj64/libpart2.o"
+[CC] libpart2.c --> obj64/libpart2.o
+gcc libpart2.c -o obj64/libpart2.o -c -MMD -O0 -m64 -ggdb -D_GNU_SOURCE -fPIC
+echo "[CXX] obj64/libpart2.o obj64/part2_hash.o --> obj64/libpart2.so"
+[CXX] obj64/libpart2.o obj64/part2_hash.o --> obj64/libpart2.so
+g++ obj64/libpart2.o obj64/part2_hash.o -o obj64/libpart2.so -m64 -MMD -O0 -m64 -ggdb -D_GNU_SOURCE -std=gnu++17 -fPIC -shared -ldl
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% emacs libpart2.c
+hydra:~/cse303/p4% make
+echo "[CC] libpart2.c --> obj64/libpart2.o"
+[CC] libpart2.c --> obj64/libpart2.o
+gcc libpart2.c -o obj64/libpart2.o -c -MMD -O0 -m64 -ggdb -D_GNU_SOURCE -fPIC
+echo "[CXX] obj64/libpart2.o obj64/part2_hash.o --> obj64/libpart2.so"
+[CXX] obj64/libpart2.o obj64/part2_hash.o --> obj64/libpart2.so
+g++ obj64/libpart2.o obj64/part2_hash.o -o obj64/libpart2.so -m64 -MMD -O0 -m64 -ggdb -D_GNU_SOURCE -std=gnu++17 -fPIC -shared -ldl
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% LD_PRELOAD=obj64/libpart2.so ./banker 0
+STATUS: Building baseline file set....
+Allocations made: 72704.
+hydra:~/cse303/p4% LD_PRELOAD=obj64/libpart2.so ./banker 9
+STATUS: Reviewing baseline file set....
+STATUS: Account bob.data has 200
+STATUS: Account alice.data has 300
+STATUS: Account rick.data has 1500
+STATUS: Account morty.data has 55
+STATUS: Account picard.data has 500
+STATUS: Account kirk.data has 500
+STATUS: Account student.data has 125
+STATUS: Account hacker.data has 0
+STATUS: Total observed: 3180.
+Allocations made: 72704.
+hydra:~/cse303/p4% LD_PRELOAD=obj64/libpart2.so ./banker 4
+filedata3=290,filedata4=210,gap=10
+hackerfd=5
+STATUS: Expected account value doesn't match!!!
+hackerdata=10filedata3=285filedata4=205Allocations made: 72704.
+hydra:~/cse303/p4% emacs libpart2.c
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% LD_PRELOAD=obj64/libpart2.so ./banker 0
+STATUS: Building baseline file set....
+Allocations made: 72704.
+hydra:~/cse303/p4% LD_PRELOAD=obj64/libpart2.so ./banker 4
+filedata3=1460,filedata4=95,gap=10
+hackerfd=5
+hackerdata=10filedata3=1455filedata4=90filedata3=490,filedata4=510,gap=10
+hackerfd=5
+hackerdata=20filedata3=485filedata4=505filedata3=190,filedata4=310,gap=10
+hackerfd=5
+STATUS: Expected account value doesn't match!!!
+hackerdata=30filedata3=185filedata4=305Allocations made: 72704.
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% emacs libpart2.c
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% make
+echo "[CC] libpart2.c --> obj64/libpart2.o"
+[CC] libpart2.c --> obj64/libpart2.o
+gcc libpart2.c -o obj64/libpart2.o -c -MMD -O0 -m64 -ggdb -D_GNU_SOURCE -fPIC
+echo "[CXX] obj64/libpart2.o obj64/part2_hash.o --> obj64/libpart2.so"
+[CXX] obj64/libpart2.o obj64/part2_hash.o --> obj64/libpart2.so
+g++ obj64/libpart2.o obj64/part2_hash.o -o obj64/libpart2.so -m64 -MMD -O0 -m64 -ggdb -D_GNU_SOURCE -std=gnu++17 -fPIC -shared -ldl
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% 
+hydra:~/cse303/p4% LD_PRELOAD=obj64/libpart2.so ./banker 0
+STATUS: Building baseline file set....
+Allocations made: 72704.
+hydra:~/cse303/p4% LD_PRELOAD=obj64/libpart2.so ./banker 4
+filedata3=490,filedata4=135,gap=6
+hackerfd=5
+hackerdata=6filedata3=487filedata4=132filedata3=45,filedata4=510,gap=6
+hackerfd=5
+hackerdata=12filedata3=42filedata4=507filedata3=477,filedata4=517,gap=6
+hackerfd=5
+hackerdata=18filedata3=474filedata4=514filedata3=32,filedata4=484,gap=6
+hackerfd=5
+hackerdata=24filedata3=29filedata4=481filedata3=19,filedata4=210,gap=6
+hackerfd=5
+hackerdata=30filedata3=16filedata4=207filedata3=1460,filedata4=172,gap=6
+hackerfd=5
+hackerdata=36filedata3=1457filedata4=169filedata3=471,filedata4=26,gap=6
+hackerfd=5
+hackerdata=42filedata3=468filedata4=23filedata3=197,filedata4=1467,gap=6
+hackerfd=5
+hackerdata=48filedata3=194filedata4=1464filedata3=474,filedata4=209,gap=6
+hackerfd=5
+hackerdata=54filedata3=471filedata4=206filedata3=184,filedata4=1474,gap=6
+hackerfd=5
+hackerdata=60filedata3=181filedata4=1471filedata3=13,filedata4=481,gap=6
+hackerfd=5
+hackerdata=66filedata3=10filedata4=478filedata3=1431,filedata4=518,gap=6
+hackerfd=5
+hackerdata=72filedata3=1428filedata4=515filedata3=0,filedata4=478,gap=6
+hackerfd=5
+hackerdata=75filedata3=0filedata4=475filedata3=475,filedata4=246,gap=6
+hackerfd=5
+hackerdata=81filedata3=472filedata4=243filedata3=462,filedata4=253,gap=6
+hackerfd=5
+hackerdata=87filedata3=459filedata4=250filedata3=465,filedata4=191,gap=6
+hackerfd=5
+hackerdata=93filedata3=462filedata4=188filedata3=452,filedata4=260,gap=6
+hackerfd=5
+hackerdata=99filedata3=449filedata4=257filedata3=1388,filedata4=340,gap=6
+hackerfd=5
+hackerdata=105filedata3=1385filedata4=337filedata3=0,filedata4=257,gap=6
+hackerfd=5
+hackerdata=108filedata3=0filedata4=254Total trades made: 18
+Allocations made: 72704.
+hydra:~/cse303/p4% 
