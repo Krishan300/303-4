@@ -2,24 +2,25 @@
 #include<unistd.h>
 #include<stdlib.h>
 #include<dlfcn.h>
+#include<string.h>
 #include"support.h"
 
-
-void load_and_invoke(char *libname, char *funcname)//ptr to func
+/* load_and_invoke() - load the given .so and execute the specified function */
+void load_and_invoke(char *libname, char *funcname)
 {
 	/* TODO: complete this function */
-	void *handle; //
+	void *handle;
     int (*func)(int, int);
-    void *(*hello)(void *); //void* --> return type; (void*) represents the parameter
-    char *error; 
+    void *(*hello)(void *);
+    char *error;
 
-    handle = dlopen(libname, RTLD_NOW);//open dynamic library
+    handle = dlopen(libname, RTLD_NOW);
     if (handle == NULL)
     {
     fprintf(stderr, "Failed to open libaray %s error:%s\n", libname, dlerror());
     exit(EXIT_FAILURE);
     }
-    hello = dlsym(handle, funcname);//use this function from the library and pass this pointer to the function
+    hello = dlsym(handle, funcname);
     if ((error = dlerror()) != NULL)  
     {
 	    fprintf(stderr, "%s\n", error);
@@ -28,7 +29,7 @@ void load_and_invoke(char *libname, char *funcname)//ptr to func
     else
    	{
    		hello(NULL);
-    	printf("execute hello success\n"); 
+    	printf("execute hello success\n");
    	}
    	dlclose(handle);
    	if ((error = dlerror()) != NULL)  
@@ -53,26 +54,29 @@ int main(int argc, char **argv)
 {
 	/* for getopt */
 	long opt;
-
+	char libname[20];
+	char funcname[20];
 	/* run a student name check */
 	check_team(argv[0]);
 
 	/* parse the command-line options. For this program, we only support */
 	/* the parameterless 'h' option, for getting help on program usage.  */
-	while((opt = getopt(argc, argv, "h")) != -1)
+	while((opt = getopt(argc, argv, "hl:f:")) != -1)
 	{
 		switch(opt)
 		{
-		case 'h':	help(argv[0]); 	break;
+			case 'h':	help(argv[0]); 	break;
+			case 'l': strcpy(libname,optarg); break;
+			case 'f': strcpy(funcname,optarg); break;
+			default : help(argv[0]);  break;
 		}
 	}
-
+	
 	/* call load_and_invoke() to run the given function of the given library */
-	load_and_invoke("./libpart1.so", "hello");
-
+	if(strcmp(libname,"")==0||strcmp(funcname,"")==0)
+	{
+		load_and_invoke(libname, funcname);
+	}
 	exit(0);
 }
 
-//in C++, dynamic for cout, don't need to re-implement cout to have endl, only need to
-//dynamic library  (.so dynamic ).   (.a  static)
-/* load_and_invoke() - load the given .so and execute the specified function */

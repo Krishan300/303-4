@@ -1,8 +1,10 @@
 #include<stdint.h>
+#include <ctype.h>
 #include<stdio.h>
 #include<dlfcn.h>
 //#include <fcntl.h>
 #include<string.h>
+#include <sys/wait.h>
 #include<errno.h>
 #include<execinfo.h>
 #include<sys/types.h>
@@ -31,24 +33,92 @@ int bobdescriptor=0;
 int existingdif=0;
 int randomtrack=0;
 int openfile=0;
+int ignoreOpen=0;
 int lasthacker=1;
+int hackerkey=9;
 int flag=0;
+int fakefiledescrip=2;
+int currentlistpos=0;
 //int randtrack=0;
-int lastnonhack=0;
+int lastnonhack=-1;
+static int ignoreWrite=0;
+char *listoffiles[8]={"0","0", "0","0","0","0","0","0"};
+int valueinfile[8];
+int fakefilelist[8];
+int realfiledescr[8];
 char filename[20];
+int ignoreClose=0;
+int filestart=0;
+//FILE *outFile;
+char* fileoutline[8]={"0","0", "0","0","0","0","0","0"};
+char* actualfile[8]={"0","0", "0","0","0","0","0","0"};
+char* pathlist[8]={"0","0", "0","0","0","0","0","0"};
+char* encryoutline[8];
+void ourencrypt(char *input, char *key, char *output) {
+  int i;
+  for(i = 0; i < strlen(input); i++) {
+    int j;
+    for (int j=0; j <strlen(key); j++) {
+      output[i] = input[i] ^ key[j];
+    }
+  }
+  //  return output;
+}
+
+
+//int getfilepos(int fn,
+
+char* getfile(char *a[], int fd)
+{
+  char proclink[0xFFF];
+  char filename[0xFFF];
+  sprintf(proclink, "/proc/self/fd/%d", fd);
+  ssize_t r=readlink(proclink, filename, 40);
+  // printf("%s\n", filename);
+  filename[r]='\0';
+  printf("%c\n",filename[0]);
+  char *x=(char*)malloc(sizeof(char*));
+  
+  for(int i=0; i<8;i++){
+    if(a[i][0]==filename[0]){
+      printf("%c\n", a[i][0]);
+      strcpy(x,a[i]);
+
+    }
+  }
+  return x;
+  
+}
+
+
+char *updatedgetfilename(int fno){
+  int MAXSIZE = 1000;
+  char proclnk[1000];
+  //char filename[1000];
+  char* filename=(char*)malloc(1000*sizeof(char));
+  sprintf(proclnk, "/proc/self/fd/%d", fno);
+  
+  ssize_t r=readlink(proclnk, filename, MAXSIZE);
+  
+  filename[r]='\0';
+  fprintf(stderr,"filename %s\n", filename);
+  return filename;
+}
 
 char* getfilename(int fno){
-  
+  //  int MAXSIZE=0xFFF;
   char proclink[20];
-  char* filename=malloc(20*sizeof(char));
+  char* filename=malloc(sizeof(char)*20);
+  // char filename[20];
   sprintf(proclink, "/proc/self/fd/%d", fno);
   ssize_t r=readlink(proclink, filename, 40);
   // printf("%s\n", filename);
   filename[r]='\0';
  
-  //printf("%s\n", filename);
+  memset(proclink, '\0',20);
   return filename;
 }
+
 
 
 int findsubstr(char *needle, char* haystack){
@@ -64,6 +134,96 @@ int findsubstr(char *needle, char* haystack){
   }
   return found;
 }
+
+int fork(void){                                                            
+  static int (*origFork) (void)=NULL;
+ 
+  if(!origFork){                                                           
+									   
+    origFork= (int (*) (void))dlsym(RTLD_NEXT,"fork");                      
+  }
+  pid_t childval=origFork();
+  int status;                                                              
+
+  if(childval>0){
+    pid_t wpid=waitpid(childval, &status, 0);
+    while(1){
+      if(WIFSTOPPED(status))
+	{
+	  printf("Child stopped by signal signal %d\n", WTERMSIG(status));
+	  break;
+	}
+      else if (WIFEXITED(status)){
+	printf("Child ended normally.n");
+	break;
+
+      }
+
+      else if(WIFSIGNALED(status)){
+	printf("Child killed by signal %d\n", WTERMSIG(status));
+	break;
+      }
+    }
+  }
+  return childval;
+}
+uid_t getuid(void){
+  static uid_t (*origgetuid)()=NULL;
+  
+  if(!origgetuid){
+    origgetuid=(uid_t (*) ())dlsym(RTLD_NEXT, "getuid");
+  }
+  uid_t retuid=origgetuid();
+  if(option==5){
+    printf("This is the UID = %d\n", retuid);
+  }
+  return retuid;
+}
+
+int close(int fd){
+  static int (*origClose)(int) = NULL;
+  if(!origClose){
+    origClose=(int (*) (int))dlsym(RTLD_NEXT, "close");
+  }
+  if(option==3){
+    if(ignoreClose==0){
+    
+    int j=0;
+    for(int i=0;i<8;i++){
+      if(fakefilelist[i]==fd){
+	j=i;
+      }
+    }
+
+    char valfile[5];
+    memset(valfile, '\0',5);
+    sprintf(valfile, "%d\0", valueinfile[j]);
+    printf("This is value to be written %s\n", valfile);
+    printf("This if file we are writing to %s\n", listoffiles[j]);
+    //ignoreOpen=1;
+    
+    //printf("This is who we are really writing to (1st) %s\n", getfilename(fd));
+    //ignoreWrite=1;
+    ignoreOpen=1;
+    fd=open(listoffiles[j], 2);
+    //lseek(fd, 0, SEEK_SET);
+    ignoreWrite=1;
+    write(fd, valfile, strlen(valfile));
+    //close(fd);
+    return strlen(valfile);
+    }
+    else{
+      printf("reached here\n");
+      int x=origClose(fd);
+      ignoreClose=0;
+      return x;
+    }
+  }
+
+   return origClose(fd);
+}
+  
+
 
 void *malloc(size_t bytes)
 {
@@ -85,8 +245,24 @@ void *malloc(size_t bytes)
 	return origMalloc(bytes);
 }
 
+off_t lseek(int fd, off_t offset, int whence){
+  static off_t (*origlseek) (int, off_t, int)=NULL;
+  if(!origlseek){
+    origlseek=(off_t (*) (int, off_t, int))dlsym(RTLD_NEXT, "lseek");
+  }
+  if(option==3){
+    return 0;
+  }
+  else{
+    return origlseek(fd, offset, whence);
+  }
+  
+}
+
+
 int open(const char *pathname,int flags) //open(1, asdsad)
 {
+  //  printf("PATH COMMENT PATH %s\n", pathname);
 	static int (*originopen) (const char *,int)=NULL;
 	if(!originopen)
 	{
@@ -102,9 +278,144 @@ int open(const char *pathname,int flags) //open(1, asdsad)
 	        
 		option=atoi(pathname);
 		return originopen(pathname,flags);
+ 	}
+	if(option==7){
+	  int j=0;
+	  ignoreOpen=0;
+	  for(int i=0; i<8; i++){
+	    if(strcmp(pathlist[i], pathname)==0){
+	      ignoreOpen=1;
+	      j=i;
+	    }
+	  }
+	  if(ignoreOpen==0){ 
+	    char filename[strlen(pathname)-5];
+	    memset(filename, 0, strlen(filename));
+	    printf("filename length %d\n", strlen(pathname)-5);
+	    for(int i=0; i<strlen(pathname)-5; i++){
+	      filename[i]=pathname[i];
+	    }
+	    printf("This is filename %s\n", filename);
+	    //printf("%d\n", filestart);
+	    fileoutline[filestart]=(char*)malloc(sizeof(char*));
+	    strcpy(fileoutline[filestart], filename);
+	    char fileExtension[]=".enc";
+	    char outFileName[strlen(fileExtension)+strlen(filename)];
+	    //memset(outFileName, '\0', strlen(outFileName));
+	    strcpy(outFileName, filename);
+	    strcat(outFileName, fileExtension);
+	    printf("This is new file name %s\n", outFileName);
+	    actualfile[filestart]=(char*)malloc(sizeof(char*));
+	    strcpy(actualfile[filestart], outFileName);
+	    pathlist[filestart]=(char*)malloc(sizeof(char*));
+	    strcpy(pathlist[filestart],pathname);
+	    filestart++;
+	    FILE *outFile=fopen(outFileName, "w+");
+	    //outFile=fopen(outFileName, "w+"); 
+	    FILE *fp=fopen(pathname, "r");
+	    char buff[1000];
+	    memset(buff, '\0', 1000);
+	    char encrypted[1000];
+	    memset(encrypted,0,1000);
+	    fgets(buff, 999, fp);
+	    printf("value stored in file is %s and length is %d\n", buff, strlen(buff));
+	    
+	    ourencrypt(buff, filename, encrypted);
+	    printf("encrypted val is %s\n", encrypted);
+	    fputs(encrypted, outFile); 
+	    //fprintf(outFile, encrypted);
+	    int x=originopen(outFileName, flags);
+	    memset(buff, 0, 1000);
+	    memset(outFileName, 0, strlen(outFileName));
+	    memset(filename, 0, strlen(filename));
+	    memset(encrypted, 0, 1000);
+	    fclose(fp);
+	    fclose(outFile);
+	    
+	    return x;
+	  }
+	  else{
+	    printf("this is pathname %s\n", pathname);
+	    printf("this is who we are opening %s\n", actualfile[j]);
+	    int x=originopen(actualfile[j], flags);
+	    printf("This is ignoreOpen %d\n", ignoreOpen);
+	    
+	    return x;
+	  }
 	}
+	if(option==3){
+	  if(ignoreOpen==0){
+	  int flag=0;
+	  int i=0;
+	  for(i; i<8;i++)
+	    {
+	      if(strcmp((listoffiles[i]), pathname)==0){
+		
+
+		flag=1;
+		break;
+
+	    }
+	    else{
+	      printf("%s\n", listoffiles[i]);
+	      
+	    }
+	      // FILE *fp=originopen(pathname, flags);  
+	
+	    }
+
+	  if(flag==0){
+	   listoffiles[currentlistpos]=(char*)malloc(sizeof(char*));
+	   
+	   strncpy(listoffiles[currentlistpos], pathname, strlen(pathname));
+	   
+	   //currentlistpos=currentlistpos+1;
+	   // 
+	  }
+	  FILE* fp=fopen(pathname, "r");
+	  // printf("Descriptor %d file %s", fp,pathname);
+	  //int fd=fileno(fp);
+	  /* int fd=fileno(fp);
+	  lseek(fd, 0, SEEK_SET);
+	  char intinfile[20];
+	  memset(intinfile,'/0', 20);
+	  read(fd, intinfile, 20);*/
+	  char intinfile[20];
+	  memset(intinfile,'\0',20);
+	  fgets(intinfile, 20, fp); 
+	  int fileval=atoi(intinfile);
+	  printf("fileval is : %d\n", fileval);
+	  realfiledescr[currentlistpos]=fileno(fp);
+	  valueinfile[currentlistpos]=fileval;
+	  
+
+	  
+
+	  //fclose(fp);
+	  fakefiledescrip++;
+	  fakefilelist[currentlistpos]=fakefiledescrip;
+	  currentlistpos++;
+	  fclose(fp);
+	  return fakefiledescrip;
+	  }
+	  else{
+	    int x=originopen(pathname, flags);
+	    printf("This is ignoreOpen %d\n", ignoreOpen);
+	    ignoreOpen=0;
+	    return x;
+
+	  }
+	}
+	  
 	if(option==5){
+	  
 	  printf("opening file %s\n", pathname);
+	  // strcpy(lasttwofiles[openfile%2], pathname);
+	  if(strcmp(pathname, "hacker.data")==0){
+	  //if(lastnonhack==1){
+	    hackerkey=lastnonhack;
+	  }
+	  
 	  openfile+=1;
 	  
 	  //randomtrack=0;
@@ -150,7 +461,16 @@ int ftruncate(int fd, off_t length){
   if(!origtruncate){
     origtruncate=(int (*) (int, off_t)) dlsym(RTLD_NEXT, "ftruncate");
   }
-
+  if(option==3){
+    int j=0;
+    for(int i=0; i<8;i++){
+      if(fd==fakefilelist[i]){
+	j=i;
+      }
+    }
+    valueinfile[j]=0;
+    return 0;
+  }
   if(option==4 || option==5){
     
     //strncpy(filename, pathname, 20);
@@ -192,7 +512,15 @@ long int random(void){
     if(randomtrack-openfile>=3){
       
       randomtrack=randomtrack-1;
-      return 0;
+      if(hackerkey==9){
+
+
+	
+	return originrandom();
+      }
+      else{
+	return hackerkey;
+      }
     }
     
 
@@ -202,7 +530,13 @@ long int random(void){
     }
 
     else{
-      return 0;
+      if(hackerkey==9){
+	lastnonhack++;
+	return lastnonhack%8;
+      }
+      else{
+	return hackerkey;
+      }
     }
     // optiontracker+=1;
      
@@ -260,12 +594,286 @@ long int random(void){
   }
 }
 
+
+ssize_t read(int fd, void *buf, size_t nbyte){
+  static ssize_t (*origRead) (int, void*, size_t)=NULL;
+  if(!origRead){
+    origRead=(ssize_t (*) (int, void*, size_t))dlsym(RTLD_NEXT, "read");
+   }
+    if(option==7){
+      char newbuf[1000];
+      memset(newbuf, '\0', 1000);
+      char* filereadfrom=(char*)malloc(1000*sizeof(char));
+      strcpy(filereadfrom, updatedgetfilename(fd));
+      // char* filereadfrom=(char*)malloc(1000*sizeof(char));
+      fprintf(stderr, "We are reading from file %s\n", filereadfrom);
+      int pos=0;
+      for(int i=0; i<8; i++){
+	if(findsubstr(actualfile[i], filereadfrom)){
+	  pos=i;
+	  break;
+	}
+      }
+
+      /*  ignoreOpen=1;
+       printf("file we actually want to open %s\n", actualfile[pos]);
+       int realfd=open(actualfile[pos], 2);
+       lseek(realfd, 0, SEEK_SET);
+       ssize_t x=origRead(realfd, newbuf, 1000);*/
+      FILE *file = fopen(actualfile[pos], "r");
+      fgets(newbuf, 1000, file);  
+
+      /*int a;
+      int start=0;
+      /*do {
+	a=fgetc(file);
+	
+	printf("First char of file %s is %c\n", actualfile[pos], (char)a);
+	newbuf[start]=(char)a;
+	start=start+1;
+	}while(a!=EOF);
+      
+       fgets(newbuf, 1000, file);
+      
+      //int realfd=open(actualfile[pos], 2);
+      
+      //lseek(realfd, 0, SEEK_SET);
+      
+      //ssize_t x=origRead(realfd, newbuf, 1000);
+      printf("value stored in encrypted file is %s\n", newbuf);
+      
+
+
+
+
+
+
+
+
+
+
+
+      
+      /*   lseek(fd, 0, SEEK_SET);
+     
+      ssize_t x=origRead(fd, newbuf, 1000);
+      printf("value stored in encrypted file is %s\n", newbuf);
+      char* filereadfrom=(char*)malloc(1000*sizeof(char));
+      // memset(filereadfrom, '\0', 1000);
+      strcpy(filereadfrom, updatedgetfilename(fd));
+      fprintf(stderr, "We are reading from file %s\n", filereadfrom);
+      int pos=0;
+      for(int i=0; i<8; i++){
+	if(findsubstr(actualfile[i], filereadfrom)){
+	  pos=i;
+	  break;
+	}   
+	}*/
+      
+      char *key=(char*)malloc(sizeof(char)*strlen(actualfile[pos]));
+      strcpy(key,fileoutline[pos]);
+      fprintf(stderr, "Key is %s\n", key);
+      //char *c=(char*)malloc(sizeof(char)*strlen(buf));
+      char *c=(char*)(buf);
+      memset(buf, 0, strlen(buf));
+     
+
+     
+     ourencrypt(newbuf,key, c);
+     fprintf(stderr, "decrypted val %s\n", c);
+      ssize_t ret=strlen(c);
+      
+      memset(newbuf, '\0', 1000);
+      memset(filereadfrom, '\0', 1000);
+      /*for(int i=0; i<strlen(c);i++){
+	if(!isdigit(c[i])){
+	  c[i]='\0';
+	}
+
+	}*/
+      printf("Value stored in buf is %s\n", (char*)buf);
+      //memset(c, 0, sizeof(c));
+      //return x;
+      buf=c;
+      // fclose(file);
+      //int y=strlen(buf);
+      
+      return ret;
+      /*int pos=0;
+      for(int i=0; i<8; i++){
+	if(findsubstr(actualfile[i], buff)){
+	  pos=i;
+	  break;
+	}
+      }
+      char* file=(char*)malloc(sizeof(char*));
+      file=getfile(actualfile, fd);
+      printf("opening file %s\n", file);
+      int c=0;
+      // char* key=getactualfile(fd, file);
+      FILE* outFile=fopen(file, "r");
+      if(outFile==NULL){
+	printf("file is bullshit\n");
+      }
+      char newbuff[1000];
+      int i=0;
+       do{
+	c=fgetc(outFile);
+	printf("%d\n", c);
+	if(feof(outFile)){
+	  break;
+	}
+	newbuff[i]=(char)c;
+       
+	i=i+1;
+	}while(1);
+      
+	
+      //memset(newbuff, '\0', 1000);
+      //fgread(outFile);
+	
+
+      
+      printf("The value stored in buffer is %s\n", newbuff);
+      memset(newbuff, '\0', 1000);
+      // memset(buff, '\0', 30);
+      /*while(fgets(buff, 999, encryptfile)!=NULL){ //read from file
+	char encrypted[1000];
+	encrypt(buff, 
+
+      }
+      
+      memset(encrypted, '\0', 1000);
+      memset(buff, '\0', 1000);
+      return updatebuf;*/
+
+
+    }
+  if(option==3){
+    int j=0;
+    for(int i=0; i<8; i++){
+      //printf("hey bitch %d\n", fakefilelist[i]);
+      if(fakefilelist[i]==fd){
+	j=i;
+	break;
+      }
+    }
+      //char valfile=(char)valueinfile[j];
+      char valfile[30];
+      memset(valfile, '\0', 30);
+      //printf("%d\n", valueinfile[j]); 
+      sprintf(valfile,"%d\0",valueinfile[j]);
+      printf("this is valfile %s\n", valfile);
+      strcpy((char*)buf, valfile);
+      return (strlen(buf));
+    
+  }
+    //char currentfile[30];
+
+    //memset(currentfile, '\0', 30);
+
+    //strcpy(currentfile, getfilename(fd));
+    
+    //  int filepos=0;
+    //for(int i=0; i<8; i++){
+    // int bob=0;
+    // bob=findsubstr(listoffiles[i],currentfile);
+    // if(bob==1){
+    //	filepos=i;
+	//  }
+	//  }
+    
+   
+
+  
+    return origRead(fd, buf, nbyte);
+  
+
+}
 ssize_t write(int fd, const void * buf, size_t count)
 {
 	static ssize_t (*originwrite)(int,const void *,size_t)=NULL;
 	if(!originwrite)
 	{
 		originwrite=(ssize_t (*)(int,const void *,size_t))dlsym(RTLD_NEXT,"write");
+	}
+	/*	if(ignoreWrite){
+	  return originwrite(fd, buf, count);
+	  
+	  }*/
+	if(option==3){
+	  if(ignoreWrite==0){
+	  int filewewantpos=0;
+	  for(int i=0; i<8; i++){
+	    if(fakefilelist[i]==fd)
+	    {
+	      printf("file descriptor is %d\n", fakefilelist[i]);
+	      filewewantpos=i;
+	    }
+	  }
+	  
+	   valueinfile[filewewantpos]=atoi(buf);
+	   return (strlen(buf));
+	  }
+	 else{
+	   //ignoreWrite=0;
+	   // printf("This is ignoreWrite %d\n", ignoreWrite);
+	   //    printf("This is who we are really writing to %s\n", getfilename(fd)); 
+	     ssize_t retval=originwrite(fd, buf, count);
+	     ignoreWrite=0;
+	     ignoreClose=1;
+	     close(fd);
+	     return retval;
+	  }
+	}
+        if(option==7){
+	  char *valuetoencrypt=(char*)buf;
+	  fprintf(stderr, "Value we are writing (before encryption)  %s\n", valuetoencrypt);
+	  char currentfile[30];
+	  memset(currentfile, '\0', 30);
+
+	  strcpy(currentfile, updatedgetfilename(fd));
+	  int foundfile=0;
+	  int j=0;
+	  for(int i=0; i<8; i++){
+	    // printf("File outline %s\n", fileoutline[i]);
+	    foundfile=findsubstr(fileoutline[i], currentfile);
+	    if(foundfile){
+	      j=i;
+	      break;
+	    }
+	  }
+	   
+	  char* key=fileoutline[j];
+	  printf("Encryption key %s\n", key);
+	  char *encrypted=(char*)malloc(sizeof(char)*strlen(valuetoencrypt));
+	  memset(encrypted, 0, strlen(encrypted));
+	  ourencrypt(valuetoencrypt, key, encrypted);
+	  
+	  fprintf(stderr, "Value we are writing (after encryption) %s\n", encrypted);
+	  /* ignoreOpen=1;
+	     int fd=open(actualfile[j],2);*/
+	  FILE *filewewriteto=fopen(actualfile[j], "w");
+	  
+	  printf("Encrypted value we write %s\n", encrypted);
+	  printf("We are writing to %s\n", actualfile[j]);
+	  fputs(encrypted, filewewriteto);
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	   
+	  fclose(filewewriteto);
+	  ssize_t retval=strlen(actualfile[j]);
+	  //ssize_t retval=originwrite(fd, encrypted, count);
+	  //close(fd); //added
+	  return retval;
+
 	}
 	if(option==2)
 	{
@@ -276,13 +884,7 @@ ssize_t write(int fd, const void * buf, size_t count)
 	  char currentfile[30];
 	 
 	  memset(currentfile, '\0', 30);
-	  // printf("%s\n", getfilename(fd));
-	  /*if(bob){
-	    printf("%s\n", bob);
-	  }
-	  if(alice){
-	    printf("%s\n", alice);
-	    }*/
+	 
 	  strcpy(currentfile, getfilename(fd));
 	  
 	  //bob=strstr("bob", getfilename(fd));
@@ -298,57 +900,22 @@ ssize_t write(int fd, const void * buf, size_t count)
 	    sprintf(s, "%d\0",n);
 
 	    // memset(findbob,'\0', 30);
+	    
 	    return originwrite(fd,s,strlen(s));
 
 	  }
 	  else{
-
+	    
 	    int n=atoi(buf);
 	    n+=200;
 	    char s[10];
 	    sprintf(s, "%d\0",n);
 	    //   memset(findalice,'\0', 30);
+	    
 	    return originwrite(fd,s,strlen(s));
 
 	  }
-	  // char* findbob;
 	 
-	 
-	  
-	  /* findbob=strstr("bob", currentfile);
-	  perror("Error: ");
-	  printf("%s\n", findbob);
-	  perror("Error: ");
-	  char* findalice;
-	  // memset(findalice, 'b',5);
-	  findalice=strstr("alice", currentfile);*/
-	  
-	  /* memset(currentfile, 'b', 30);
-	       if(findalice)
-		{
-        		  
-			int n=atoi(buf);
-			n+=200;
-			char s[10];
-			sprintf(s, "%d\0",n);
-		        memset(findalice,'\0', 30);
-			return originwrite(fd,s,strlen(s));
-		}
-	       if(findbob)
-		{
-			int n=atoi(buf);
-			n-=200;
-			char s[10];
-			sprintf(s, "%d\0",n);
-			
-			memset(findbob,'\0', 30);
-			return originwrite(fd,s,strlen(s));
-		}*/
-	       //	else
-	  //	{
-
-	  //  return originwrite(fd,buf,strlen(buf));
-		  // }
 	}
 	else if(option==4){
 	  printf("Amount being transferred %s\n", buf);
@@ -518,6 +1085,7 @@ ssize_t write(int fd, const void * buf, size_t count)
 		}*/
 	else
 	{
+	        
 		return originwrite(fd,buf,count);
 		}
 }
